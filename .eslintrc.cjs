@@ -23,7 +23,6 @@ module.exports = {
     },
   ],
   parser: '@typescript-eslint/parser',
-  ignorePatterns: ['vite.config.ts'],
   parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module',
