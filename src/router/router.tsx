@@ -5,7 +5,7 @@ import { Main } from '../pages/Main';
 import { Page404 } from '../pages/Page404';
 import { SignIn } from '../pages/SignIn';
 import { SignUp } from '../pages/SignUp';
-import { Welcome } from '../pages/Welcome';
+import { Welcome } from '../pages/Welcome/Welcome';
 import { Path } from './types';
 
 const router = createBrowserRouter([
