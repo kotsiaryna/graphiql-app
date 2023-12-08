@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import styles from './inputEndpoint.module.scss';
 
-function InputApi() {
+export function InputApi() {
   const [value, setValue] = useState('');
   const handleChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
     setValue(e.target.value);
@@ -26,5 +26,3 @@ function InputApi() {
     </section>
   );
 }
-
-export default InputApi;
