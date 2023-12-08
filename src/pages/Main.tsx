@@ -1,3 +1,12 @@
+import DocExplorer from '../components/main/DocExplorer';
+import InputApi from '../components/main/InputEndpoint';
+
 export function Main() {
-  return <div>Main GraphiQL Page</div>;
+  return (
+    <div>
+      <h2>GraphiQL Page</h2>
+      <InputApi />
+      <DocExplorer />
+    </div>
+  );
 }
