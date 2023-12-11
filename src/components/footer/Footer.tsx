@@ -15,8 +15,8 @@ export function Footer() {
 
       <div className={styles.footer_linksWrapper}>
         {authorsData.map((author: AuthorData) => (
-          <Link key={author.name} to={author.githubUrl}>
-            {author.name}
+          <Link key={author.githubName} to={author.githubUrl}>
+            {author.githubName}
           </Link>
         ))}
       </div>
