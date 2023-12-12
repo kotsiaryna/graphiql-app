@@ -1,4 +1,4 @@
-import { AuthorData } from './types';
+import { AuthorData } from '../types/types';
 
 export const authorsData: AuthorData[] = [
   {
