@@ -6,34 +6,34 @@
     align-items: center;
     text-align: center;
 
+    &_links {
+        width: 100%;
+        display: flex;
+        justify-content: end;
+        gap: 20px;
+        font-weight: bolder;
+    }
 
-    ul {
+    &_content {
+        padding: 20px;
+        max-width: 800px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+        font-size: 18px;
+        line-height: 35px;
+    }
+
+    &_list {
         display: flex;
         flex-direction: column;
         width: fit-content;
         gap: 15px;
-
-        li {
-            text-align: left;
-        }
     }
-}
 
-.welcomePage_links {
-    width: 100%;
-    display: flex;
-    justify-content: end;
-    gap: 20px;
-    font-weight: bolder;
-}
+    &_listItem {
+        text-align: left;
 
-.welcomePage_content {
-    padding: 20px;
-    max-width: 800px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    align-items: center;
-    font-size: 18px;
-    line-height: 35px;
+    }
 }

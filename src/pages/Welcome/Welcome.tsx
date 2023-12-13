@@ -19,15 +19,14 @@ export function Welcome() {
           We are a React Rangers team consisting of three talented developers!
         </div>
 
-        <ul>
+        <ul className={styles.welcomePage_list}>
           <h3>Team</h3>
           {authorsData.map((author: AuthorData) => (
-            <li key={author.githubName}>
+            <li key={author.githubName} className={styles.welcomePage_listItem}>
               {author.name}
               <div>
                 GitHub:
                 <Link to={author.githubUrl} target="_blank">
-                  {' '}
                   {author.githubName}
                 </Link>
               </div>

@@ -1,6 +1,7 @@
 import Stack from '@mui/material/Stack';
 import IconButton from '@mui/material/IconButton';
 import TranslateIcon from '@mui/icons-material/Translate';
+import Tooltip from '@mui/material/Tooltip';
 
 import * as React from 'react';
 import Menu from '@mui/material/Menu';
@@ -22,15 +23,17 @@ export function TranslateButton() {
   return (
     <div>
       <Stack spacing={2} direction="row">
-        <IconButton
-          id="fade-button"
-          aria-controls={open ? 'fade-menu' : undefined}
-          aria-haspopup="true"
-          aria-expanded={open ? 'true' : undefined}
-          onClick={handleClick}
-        >
-          <TranslateIcon />
-        </IconButton>
+        <Tooltip title="Translate">
+          <IconButton
+            id="fade-button"
+            aria-controls={open ? 'fade-menu' : undefined}
+            aria-haspopup="true"
+            aria-expanded={open ? 'true' : undefined}
+            onClick={handleClick}
+          >
+            <TranslateIcon />
+          </IconButton>
+        </Tooltip>
       </Stack>
       <Menu
         id="fade-menu"
