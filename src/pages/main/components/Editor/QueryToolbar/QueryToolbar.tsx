@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import styles from './queryToolbar.module.scss';
+import styles from './QueryToolbar.module.scss';
 
 export function QueryToolbar() {
   const varEditorRef = useRef<HTMLDivElement>(null);

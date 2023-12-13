@@ -1,4 +1,4 @@
-import styles from './queryEditor.module.scss';
+import styles from './QueryEditor.module.scss';
 
 export function QueryEditor() {
   return (

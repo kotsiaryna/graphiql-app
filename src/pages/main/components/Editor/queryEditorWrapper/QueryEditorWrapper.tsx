@@ -1,5 +1,5 @@
-import { QueryEditor } from './QueryEditor';
-import styles from './queryEditorWrapper.module.scss';
+import { QueryEditor } from './queryEditor/QueryEditor';
+import styles from './QueryEditorWrapper.module.scss';
 
 export function QueryEditorWrapper() {
   return (

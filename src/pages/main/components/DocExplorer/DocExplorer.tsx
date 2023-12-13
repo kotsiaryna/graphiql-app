@@ -1,4 +1,4 @@
-import styles from './docExplorer.module.scss';
+import styles from './DocExplorer.module.scss';
 
 export function DocExplorer() {
   const isError = false; // todo receive error state from api response

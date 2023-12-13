@@ -1,4 +1,4 @@
-import styles from './viewer.module.scss';
+import styles from './Viewer.module.scss';
 
 export function Viewer() {
   const response = 'Here will be response from server'; // todo get and parse response from API

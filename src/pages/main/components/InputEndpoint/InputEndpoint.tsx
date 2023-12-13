@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import styles from './inputEndpoint.module.scss';
+import styles from './InputEndpoint.module.scss';
 
 export function InputApi() {
   const [value, setValue] = useState('');
