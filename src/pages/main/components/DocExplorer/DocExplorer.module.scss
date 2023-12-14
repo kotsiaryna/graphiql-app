@@ -1,0 +1,23 @@
+.doc {
+  grid-area: doc;
+  height: calc(80vh + 65px); // calc (100vh - header - footer)
+  border: 1px solid black;
+  padding: 10px;
+
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+
+  &__heading {
+    width: 100%;
+    line-height: 40px;
+    text-align: center;
+  }
+
+  &__error {
+    color: rgb(168, 10, 10);
+  }
+
+  &__data {
+    font-size: 1em;
+  }
+}

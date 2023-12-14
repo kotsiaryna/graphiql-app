@@ -1,0 +1,22 @@
+.endpoint {
+  grid-area: endpoint;
+  width: 350px;
+  height: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  
+  &__input {
+  width: 85%;
+  height: 100%;
+  padding: 0 10px;
+  }
+
+  &__button {
+    height: 100%;
+    padding: 0 7px;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
