@@ -2,9 +2,14 @@ import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import CssBaseline from '@mui/material/CssBaseline';
-import { Link } from 'react-router-dom';
 import { ElevationScroll } from './handler';
-import { Path } from '../../router/types';
+
+import { WelcomeButton } from './components/WelcomeButton';
+import { HomeButton } from './components/HomeButton';
+import { SingnInButton } from './components/SignInButton';
+import { SingnUpButton } from './components/SignUpButton';
+import { TranslateButton } from './components/TranslateButton';
+import { SignOutButton } from './components/SignOutButton';
 import styles from './Header.module.scss';
 
 export function Header() {
@@ -19,8 +24,12 @@ export function Header() {
               variant="h6"
               component="div"
             >
-              <Link to={Path.SignIn}>Sign In</Link>
-              <Link to={Path.SignUp}>Sign Up</Link>
+              <WelcomeButton />
+              <HomeButton />
+              <SingnInButton />
+              <SingnUpButton />
+              <SignOutButton />
+              <TranslateButton />
             </Typography>
           </Toolbar>
         </AppBar>

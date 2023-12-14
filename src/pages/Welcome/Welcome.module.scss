@@ -1,4 +1,39 @@
 .welcomePage {
+    padding: 25px;
     flex: 1 0 auto;
-    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    &_links {
+        width: 100%;
+        display: flex;
+        justify-content: end;
+        gap: 20px;
+        font-weight: bolder;
+    }
+
+    &_content {
+        padding: 20px;
+        max-width: 800px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+        font-size: 18px;
+        line-height: 35px;
+    }
+
+    &_list {
+        display: flex;
+        flex-direction: column;
+        width: fit-content;
+        gap: 15px;
+    }
+
+    &_listItem {
+        text-align: left;
+
+    }
 }

@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
-import { authorsData, linkToCourse } from './data';
-import { AuthorData } from './types';
+import { authorsData, linkToCourse } from '../../data/data';
+import { AuthorData } from '../../types/types';
 import rssLogo from '../../assets/images/logo-rss.png';
 import styles from './Footer.module.scss';
 
@@ -15,8 +15,8 @@ export function Footer() {
 
       <div className={styles.footer_linksWrapper}>
         {authorsData.map((author: AuthorData) => (
-          <Link key={author.name} to={author.githubUrl}>
-            {author.name}
+          <Link key={author.githubName} to={author.githubUrl} target="_blank">
+            {author.githubName}
           </Link>
         ))}
       </div>
