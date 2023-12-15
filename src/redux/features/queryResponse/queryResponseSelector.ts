@@ -1,3 +1,3 @@
 import { RootState } from '../../store';
 
-export const selectResponse = (state: RootState) => state.queryResponse;
+export const selectQueryResponse = (state: RootState) => state.queryResponse;
