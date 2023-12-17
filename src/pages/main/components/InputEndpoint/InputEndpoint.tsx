@@ -6,7 +6,7 @@ export function InputApi() {
   const handleChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
     setValue(e.target.value);
   };
-  const handleClick = () => { };
+  const handleClick = () => {};
 
   return (
     <section className={styles.endpoint}>
