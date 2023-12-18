@@ -14,11 +14,13 @@ export const apiErrorSlice = createSlice({
   name: 'apiError',
   initialState,
   reducers: {
-    setError: (_state, action: PayloadAction<ApiError['errorMessage']>) => {
-      return { isApiError: true, errorMessage: action.payload };
+    setError: (state, action: PayloadAction<ApiError['errorMessage']>) => {
+      state.isApiError = true;
+      state.errorMessage = action.payload;
     },
-    deleteError: () => {
-      return { isApiError: false, errorMessage: '' };
+    deleteError: (state) => {
+      state.isApiError = false;
+      state.errorMessage = '';
     },
   },
 });
