@@ -28,8 +28,7 @@ export const getQuery = async ({
     const { data } = await axios.post<QueryResponse>(url, body, {
       headers: { ...headers, 'Content-Type': 'application/json' },
     });
-    const { data: queryData, errors } = data;
-    return queryData || errors;
+    return data;
   } catch (error) {
     if (axios.isAxiosError(error)) {
       return error.message;
