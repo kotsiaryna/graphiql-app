@@ -2,24 +2,25 @@ import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 
 interface SchemaResponse {
-  data?: object;
-  error?: string;
+  data: object | null;
 }
-const initialState: SchemaResponse = {};
+const initialState: SchemaResponse = {
+  data: null,
+};
 
 export const schemaSlice = createSlice({
   name: 'schema',
   initialState,
   reducers: {
-    saveSchema: (_state, action: PayloadAction<SchemaResponse['data']>) => {
-      return { data: action.payload };
+    saveSchema: (state, action: PayloadAction<SchemaResponse['data']>) => {
+      state.data = action.payload;
     },
-    saveError: (_state, action: PayloadAction<SchemaResponse['error']>) => {
-      return { error: action.payload };
+    deleteSchema: (state) => {
+      state.data = null;
     },
   },
 });
 
-export const { saveSchema, saveError } = schemaSlice.actions;
+export const { saveSchema, deleteSchema } = schemaSlice.actions;
 
 export default schemaSlice.reducer;

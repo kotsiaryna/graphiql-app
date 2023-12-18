@@ -20,16 +20,16 @@ export const queryRequestSlice = createSlice({
   initialState,
   reducers: {
     addUrl: (state, action: PayloadAction<string>) => {
-      return { ...state, url: action.payload };
+      state.url = action.payload;
     },
     addQuery: (state, action: PayloadAction<string>) => {
-      return { ...state, query: action.payload };
+      state.query = action.payload;
     },
     addVariables: (state, action: PayloadAction<string>) => {
-      return { ...state, variables: action.payload };
+      state.variables = action.payload;
     },
     addHeaders: (state, action: PayloadAction<object>) => {
-      return { ...state, headers: action.payload };
+      state.headers = action.payload;
     },
   },
 });
