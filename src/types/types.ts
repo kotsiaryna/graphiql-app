@@ -1,8 +1,13 @@
 import * as yup from 'yup';
-import { userCredentialsSchema } from '../utils/userCredentialsSchema';
+import {
+  userCredentialsSchemaSignIn,
+  userCredentialsSchemaSignUp,
+} from '../utils/userCredentialsSchema';
 
-export interface ValidFormData
-  extends yup.InferType<typeof userCredentialsSchema> {}
+export interface ValidSignUpData
+  extends yup.InferType<typeof userCredentialsSchemaSignUp> {}
+export interface ValidSignInData
+  extends yup.InferType<typeof userCredentialsSchemaSignIn> {}
 
 export interface AuthorData {
   name: string;
