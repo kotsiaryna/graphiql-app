@@ -83,7 +83,7 @@ export function SignIn() {
             variant="contained"
             disabled={!isDirty || !isValid || isLoading}
           >
-            Register
+            Login
           </Button>
           <Link to={Path.SignUp}>
             <Button>Don&apos;t have an account? Register now.</Button>
