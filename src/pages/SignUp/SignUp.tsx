@@ -8,10 +8,10 @@ import { useEffect, useState } from 'react';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import styles from './SignUp.module.scss';
-import { userCredentialsSchema } from '../../utils/userCredentialsSchema';
-import { ValidFormData } from '../../types/types';
 import { Path } from '../../router/types';
 import { auth, registerWithEmailAndPassword } from '../../firebase';
+import { ValidSignUpData } from '../../types/types';
+import { userCredentialsSchemaSignUp } from '../../utils/userCredentialsSchema';
 
 export function SignUp() {
   const [user, loading] = useAuthState(auth);
@@ -21,9 +21,9 @@ export function SignUp() {
     register,
     handleSubmit,
     formState: { errors, isDirty, isValid, isLoading },
-  } = useForm<ValidFormData>({
+  } = useForm<ValidSignUpData>({
     mode: 'onTouched',
-    resolver: yupResolver(userCredentialsSchema),
+    resolver: yupResolver(userCredentialsSchemaSignUp),
   });
 
   useEffect(() => {
@@ -35,7 +35,7 @@ export function SignUp() {
     setShowPassword((prevShowPassword) => !prevShowPassword);
   };
 
-  const onSubmit: SubmitHandler<ValidFormData> = ({
+  const onSubmit: SubmitHandler<ValidSignUpData> = ({
     name,
     email,
     password,
@@ -54,6 +54,7 @@ export function SignUp() {
           name="name"
           error={!!errors.name?.message}
           helperText={errors && errors.name?.message}
+          autoComplete="name"
           variant="outlined"
           margin="none"
           fullWidth
@@ -65,6 +66,7 @@ export function SignUp() {
           name="email"
           error={!!errors.email?.message}
           helperText={errors && errors.email?.message}
+          autoComplete="email"
           variant="outlined"
           margin="none"
           fullWidth
@@ -76,6 +78,7 @@ export function SignUp() {
           name="password"
           error={!!errors.password?.message}
           helperText={errors && errors.password?.message}
+          autoComplete="password"
           type={showPassword ? 'text' : 'password'}
           InputProps={{
             endAdornment: (
