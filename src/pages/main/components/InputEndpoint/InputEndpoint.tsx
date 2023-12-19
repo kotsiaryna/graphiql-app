@@ -8,6 +8,7 @@ import {
   saveSchema,
 } from '../../../../redux/features/schema/schemaSlice';
 import { addUrl } from '../../../../redux/features/queryRequest/queryRequestSlice';
+import { deleteResponse } from '../../../../redux/features/queryResponse/queryResponseSlice';
 
 export function InputApi() {
   const [value, setValue] = useState('');
@@ -17,6 +18,7 @@ export function InputApi() {
   const dispatch = useDispatch();
 
   const handleClick = async () => {
+    dispatch(deleteResponse());
     const result = await getSchema(value);
     if (typeof result === 'string') {
       dispatch(setError(result));
