@@ -1,6 +1,13 @@
 import * as Yup from 'yup';
 
 const userCredentialsSchema = Yup.object().shape({
+  name: Yup.string()
+    .required('Name is required field')
+    .matches(
+      /^[A-Z][a-z]*$/,
+      'Name must start with an uppercase letter and only contain letters'
+    )
+    .min(4, 'Name must contain at least 4 letters'),
   email: Yup.string()
     .required('Email is required field')
     .email('Invalid email address'),
