@@ -1,11 +1,11 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { Layout } from '../components/Layout/Layout';
 import { ErrorPage } from '../pages/ErrorPage';
-import { Main } from '../pages/Main';
+import { Main } from '../pages/main/Main';
 import { Page404 } from '../pages/Page404';
 import { SignIn } from '../pages/SignIn/SignIn';
 import { SignUp } from '../pages/SignUp/SignUp';
-import { Welcome } from '../pages/Welcome';
+import { Welcome } from '../pages/Welcome/Welcome';
 import { Path } from './types';
 
 const router = createBrowserRouter([
