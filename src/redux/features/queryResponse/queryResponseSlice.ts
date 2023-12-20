@@ -14,9 +14,13 @@ export const queryResponseSlice = createSlice({
     saveResponse: (_state, action: PayloadAction<QueryResponse>) => {
       return action.payload;
     },
+    deleteResponse: (state) => {
+      delete state.data;
+      delete state.errors;
+    },
   },
 });
 
-export const { saveResponse } = queryResponseSlice.actions;
+export const { saveResponse, deleteResponse } = queryResponseSlice.actions;
 
 export default queryResponseSlice.reducer;
