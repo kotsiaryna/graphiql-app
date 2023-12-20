@@ -17,7 +17,7 @@ export function ErrorPopUp() {
   return (
     <ClickAwayListener onClickAway={handleClickAway}>
       <Popup open={isApiError} disablePortal>
-        <div className={styles.popup}>{errorMessage}</div>
+        <p className={styles.popup}>{errorMessage}</p>
       </Popup>
     </ClickAwayListener>
   );

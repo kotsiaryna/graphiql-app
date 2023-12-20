@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { QueryResponse } from '../types/types';
 
 // todo export interface from types!
 interface QueryRequest {
@@ -7,21 +8,15 @@ interface QueryRequest {
   variables?: string;
   headers?: object;
 }
-export type QueryError = {
-  message: string;
-  locations?: [{ line: number; column: number }];
-};
-export interface QueryResponse {
-  data?: object;
-  errors?: QueryError[];
-}
 
-export const getQuery = async ({
+type QueryFn = ({
   url,
   query,
   variables,
   headers,
-}: QueryRequest) => {
+}: QueryRequest) => Promise<string | QueryResponse>;
+
+export const getQuery: QueryFn = async ({ url, query, variables, headers }) => {
   const body = { query, variables };
 
   try {
