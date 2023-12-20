@@ -16,7 +16,7 @@ export function ErrorPopUp() {
   return (
     <ClickAwayListener onClickAway={handleClickAway}>
       <Popup open={open} disablePortal>
-        <div className={styles.popup}>Network error</div>
+        <p className={styles.popup}>Network error</p>
       </Popup>
     </ClickAwayListener>
   );
