@@ -9,6 +9,10 @@ type SchemaType = {
   };
 };
 
+type SchemaFn = (
+  url: string
+) => Promise<string | SchemaType['data']['__schema']>;
+
 const schemaQuery = {
   query: `{
     __schema {
@@ -30,7 +34,7 @@ const schemaQuery = {
 };
 
 // type for url Request<'url'>
-export const getSchema = async (url: string) => {
+export const getSchema: SchemaFn = async (url) => {
   try {
     const { data } = await axios.post<SchemaType>(url, schemaQuery, {
       headers: { 'Content-Type': 'application/json' },
