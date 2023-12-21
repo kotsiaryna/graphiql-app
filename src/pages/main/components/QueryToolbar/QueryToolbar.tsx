@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { QueryParamsEditor } from '../../../../components/QueryParamsEditor/QueryParamsEditor';
 import {
   addVariables,
@@ -9,40 +9,54 @@ import styles from './QueryToolbar.module.scss';
 export function QueryToolbar() {
   const varEditorRef = useRef<HTMLDivElement>(null);
   const headersEditorRef = useRef<HTMLDivElement>(null);
+  const [activeEditor, setActiveEditor] = useState('Variables');
 
-  const toggleEditor = () => {
-    if (varEditorRef.current) {
-      varEditorRef.current.hidden = !varEditorRef.current.hidden;
+  useEffect(() => {
+    if (activeEditor === 'Variables') {
+      varEditorRef.current!.hidden = false;
+      headersEditorRef.current!.hidden = true;
+    } else {
+      varEditorRef.current!.hidden = true;
+      headersEditorRef.current!.hidden = false;
     }
-    if (headersEditorRef.current) {
-      headersEditorRef.current.hidden = !headersEditorRef.current.hidden;
-    }
-  };
+  });
 
   return (
     <div className={styles.queryToolbar}>
       <div className={styles.queryToolbar__heading}>
         <button
-          className={styles.queryToolbar__button}
+          className={
+            activeEditor === 'Variables'
+              ? styles.queryToolbar__activeButton
+              : styles.queryToolbar__button
+          }
           type="button"
-          onClick={toggleEditor}
+          onClick={() => setActiveEditor('Variables')}
         >
           Variables
         </button>
         <button
-          className={styles.queryToolbar__button}
+          className={
+            activeEditor === 'Headers'
+              ? styles.queryToolbar__activeButton
+              : styles.queryToolbar__button
+          }
           type="button"
-          onClick={toggleEditor}
+          onClick={() => setActiveEditor('Headers')}
         >
           Headers
         </button>
       </div>
-      <div className={styles.queryToolbar__editor} ref={varEditorRef} hidden>
-        Editor for variables
+
+      <div className={styles.queryToolbar__editor} ref={varEditorRef}>
         <QueryParamsEditor setData={addVariables} />
       </div>
-      <div className={styles.queryToolbar__editor} ref={headersEditorRef}>
-        Editor for headers
+
+      <div
+        className={styles.queryToolbar__editor}
+        ref={headersEditorRef}
+        hidden
+      >
         <QueryParamsEditor
           setData={addHeaders}
           placeholderValue={'{\n "key": "value" \n}'}
