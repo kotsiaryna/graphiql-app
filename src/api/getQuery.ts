@@ -6,7 +6,7 @@ interface QueryRequest {
   url: string;
   query: string;
   variables?: string;
-  headers?: object;
+  headers?: string;
 }
 
 type QueryFn = ({
@@ -21,7 +21,7 @@ export const getQuery: QueryFn = async ({ url, query, variables, headers }) => {
 
   try {
     const { data } = await axios.post<QueryResponse>(url, body, {
-      headers: { ...headers, 'Content-Type': 'application/json' },
+      headers: { headers, 'Content-Type': 'application/json' },
     });
     return data;
   } catch (error) {

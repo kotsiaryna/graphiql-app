@@ -1,4 +1,9 @@
 import { useRef } from 'react';
+import { QueryParamsEditor } from '../../../../components/QueryParamsEditor/QueryParamsEditor';
+import {
+  addVariables,
+  addHeaders,
+} from '../../../../redux/features/queryRequest/queryRequestSlice';
 import styles from './QueryToolbar.module.scss';
 
 export function QueryToolbar() {
@@ -34,9 +39,14 @@ export function QueryToolbar() {
       </div>
       <div className={styles.queryToolbar__editor} ref={varEditorRef} hidden>
         Editor for variables
+        <QueryParamsEditor setData={addVariables} />
       </div>
       <div className={styles.queryToolbar__editor} ref={headersEditorRef}>
         Editor for headers
+        <QueryParamsEditor
+          setData={addHeaders}
+          placeholderValue={'{\n "key": "value" \n}'}
+        />
       </div>
     </div>
   );
