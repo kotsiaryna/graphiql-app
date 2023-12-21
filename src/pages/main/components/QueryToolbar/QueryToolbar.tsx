@@ -10,8 +10,9 @@ export function QueryToolbar() {
   const varEditorRef = useRef<HTMLDivElement>(null);
   const headersEditorRef = useRef<HTMLDivElement>(null);
   const [activeEditor, setActiveEditor] = useState('Variables');
+  const [isShowEditor, setIsShowEditor] = useState(true);
 
-  useEffect(() => {
+  const showEditor = () => {
     if (activeEditor === 'Variables') {
       varEditorRef.current!.hidden = false;
       headersEditorRef.current!.hidden = true;
@@ -19,7 +20,17 @@ export function QueryToolbar() {
       varEditorRef.current!.hidden = true;
       headersEditorRef.current!.hidden = false;
     }
-  });
+  };
+
+  const hideEditor = () => {
+    varEditorRef.current!.hidden = true;
+    headersEditorRef.current!.hidden = true;
+  };
+
+  const changeEditorVisibility = () =>
+    isShowEditor ? setIsShowEditor(false) : setIsShowEditor(true);
+
+  useEffect(() => (isShowEditor ? showEditor() : hideEditor()));
 
   return (
     <div className={styles.queryToolbar}>
@@ -45,6 +56,13 @@ export function QueryToolbar() {
           onClick={() => setActiveEditor('Headers')}
         >
           Headers
+        </button>
+        <button
+          className={styles.queryToolbar__button}
+          type="button"
+          onClick={changeEditorVisibility}
+        >
+          {isShowEditor ? 'Hide editor' : 'Show editor'}
         </button>
       </div>
 
