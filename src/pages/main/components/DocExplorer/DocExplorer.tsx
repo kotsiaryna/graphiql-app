@@ -3,7 +3,7 @@ import styles from './DocExplorer.module.scss';
 import { selectSchemaResponse } from '../../../../redux/features/schema/schemaSelector';
 
 export function DocExplorer() {
-  const data = useSelector(selectSchemaResponse); // todo parse data;
+  const { data } = useSelector(selectSchemaResponse); // todo parse data;
   return (
     <>
       {data && (
