@@ -1,26 +1,44 @@
-import { createSlice } from '@reduxjs/toolkit';
-import type { PayloadAction } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { QueryResponse } from '../../../types/types';
+import { getQuery } from '../../../api/getQuery';
 
-const initialState: QueryResponse = {
-  data: {},
-  errors: [{ message: '' }],
+export const fetchQuery = createAsyncThunk('queryResponse/fetch', getQuery);
+
+type InitStateType = {
+  response: QueryResponse;
+  errorMessage: string | null;
+};
+
+const initialState: InitStateType = {
+  response: {},
+  errorMessage: null,
 };
 
 export const queryResponseSlice = createSlice({
   name: 'queryResponse',
   initialState,
   reducers: {
-    saveResponse: (_state, action: PayloadAction<QueryResponse>) => {
-      return action.payload;
-    },
     deleteResponse: (state) => {
-      delete state.data;
-      delete state.errors;
+      state.response = {};
     },
+    deleteResponseError: (state) => {
+      state.errorMessage = null;
+    },
+  },
+  extraReducers: (builder) => {
+    builder.addCase(fetchQuery.fulfilled, (state, action) => {
+      if (typeof action.payload === 'string') {
+        state.response = {};
+        state.errorMessage = action.payload;
+      } else {
+        state.response = action.payload;
+        state.errorMessage = null;
+      }
+    });
   },
 });
 
-export const { saveResponse, deleteResponse } = queryResponseSlice.actions;
+export const { deleteResponse, deleteResponseError } =
+  queryResponseSlice.actions;
 
 export default queryResponseSlice.reducer;
