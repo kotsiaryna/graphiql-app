@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { QueryToolbarControls } from '../QueryToolbarControls/QueryToolbarControls';
 import { QueryParamsEditor } from '../../../../components/QueryParamsEditor/QueryParamsEditor';
 import {
   addVariables,
@@ -34,37 +35,12 @@ export function QueryToolbar() {
 
   return (
     <div className={styles.queryToolbar}>
-      <div className={styles.queryToolbar__heading}>
-        <button
-          className={
-            activeEditor === 'Variables'
-              ? styles.queryToolbar__activeButton
-              : styles.queryToolbar__button
-          }
-          type="button"
-          onClick={() => setActiveEditor('Variables')}
-        >
-          Variables
-        </button>
-        <button
-          className={
-            activeEditor === 'Headers'
-              ? styles.queryToolbar__activeButton
-              : styles.queryToolbar__button
-          }
-          type="button"
-          onClick={() => setActiveEditor('Headers')}
-        >
-          Headers
-        </button>
-        <button
-          className={styles.queryToolbar__button}
-          type="button"
-          onClick={changeEditorVisibility}
-        >
-          {isShowEditor ? 'Hide editor' : 'Show editor'}
-        </button>
-      </div>
+      <QueryToolbarControls
+        activeEditor={activeEditor}
+        setActiveEditor={setActiveEditor}
+        changeEditorVisibility={changeEditorVisibility}
+        isShowEditor={isShowEditor}
+      />
 
       <div className={styles.queryToolbar__editor} ref={varEditorRef}>
         <QueryParamsEditor setData={addVariables} />

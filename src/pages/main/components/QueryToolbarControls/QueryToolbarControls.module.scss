@@ -1,0 +1,17 @@
+.queryToolbarControls {
+    height: 40px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    &__button {
+        height: 30px;
+        padding: 0 10px;
+    }
+
+    &__activeButton {
+        height: 30px;
+        padding: 0 10px;
+        background-color: #c7deeb;
+    }
+}
