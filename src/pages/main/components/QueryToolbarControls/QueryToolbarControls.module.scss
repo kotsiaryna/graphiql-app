@@ -1,17 +1,23 @@
 .queryToolbarControls {
+    padding-right: 5px;
     height: 40px;
     display: flex;
     align-items: center;
-    gap: 20px;
+    justify-content: space-between;
+
+    &__editorButtons {
+        display: flex;
+        gap: 20px;
+    }
 
     &__button {
-        height: 30px;
-        padding: 0 10px;
+        padding: 5px 10px;
     }
 
     &__activeButton {
-        height: 30px;
-        padding: 0 10px;
+        padding: 5px 10px;
         background-color: #c7deeb;
+        border-color: transparent;
+        border-radius: 3px;
     }
 }
