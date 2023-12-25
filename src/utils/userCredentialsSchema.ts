@@ -10,7 +10,15 @@ const nameValidation = Yup.string()
 
 const emailValidation = Yup.string()
   .required('Email is required field')
-  .email('Invalid email address');
+  .test('is-email', 'Invalid email address', (value) => {
+    if (value) {
+      const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+      if (!emailRegex.test(value)) {
+        return false;
+      }
+    }
+    return true;
+  });
 
 const passwordValidation = Yup.string()
   .required('Password is required field')
