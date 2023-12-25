@@ -17,6 +17,7 @@ export function SignUp() {
   const [user, loading] = useAuthState(auth);
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
+  const [isEmailError, setIsEmailError] = useState(false);
   const {
     register,
     handleSubmit,
@@ -40,7 +41,9 @@ export function SignUp() {
     email,
     password,
   }) => {
-    registerWithEmailAndPassword(name, email, password);
+    registerWithEmailAndPassword(name, email, password)
+      .then(() => setIsEmailError(false))
+      .catch(() => setIsEmailError(true));
     if (user) navigate(Path.Main);
   };
 
@@ -93,6 +96,9 @@ export function SignUp() {
           margin="none"
           fullWidth
         />
+        {isEmailError && (
+          <p className={styles.error_message}>Email already exist</p>
+        )}
         <div className={styles.button_wrapper}>
           <Button
             type="submit"

@@ -17,6 +17,7 @@ export function SignIn() {
   const [user, loading] = useAuthState(auth);
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
+  const [isLoginError, setIsLoginError] = useState(false);
   const {
     register,
     handleSubmit,
@@ -36,7 +37,9 @@ export function SignIn() {
   };
 
   const onSubmit: SubmitHandler<ValidSignInData> = ({ email, password }) => {
-    logInWithEmailAndPassword(email, password);
+    logInWithEmailAndPassword(email, password)
+      .then(() => setIsLoginError(false))
+      .catch(() => setIsLoginError(true));
     if (user) navigate(Path.Main);
   };
 
@@ -77,6 +80,9 @@ export function SignIn() {
           margin="none"
           fullWidth
         />
+        {isLoginError && (
+          <p className={styles.error_message}>Incorrect email or password</p>
+        )}
         <div className={styles.button_wrapper}>
           <Button
             type="submit"
