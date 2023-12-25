@@ -4,7 +4,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { Button, IconButton, InputAdornment, TextField } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import styles from './SignUp.module.scss';
@@ -14,7 +14,7 @@ import { ValidSignUpData } from '../../types/types';
 import { userCredentialsSchemaSignUp } from '../../utils/userCredentialsSchema';
 
 export function SignUp() {
-  const [user, loading] = useAuthState(auth);
+  const [user] = useAuthState(auth);
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [isEmailError, setIsEmailError] = useState(false);
@@ -26,11 +26,6 @@ export function SignUp() {
     mode: 'onTouched',
     resolver: yupResolver(userCredentialsSchemaSignUp),
   });
-
-  useEffect(() => {
-    if (loading) return;
-    if (user) navigate(Path.Main);
-  }, [user, loading, navigate]);
 
   const togglePasswordVisibility = (): void => {
     setShowPassword((prevShowPassword) => !prevShowPassword);

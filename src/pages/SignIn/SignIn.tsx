@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, useNavigate } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Button, IconButton, InputAdornment, TextField } from '@mui/material';
@@ -14,7 +14,7 @@ import styles from './SignIn.module.scss';
 import { userCredentialsSchemaSignIn } from '../../utils/userCredentialsSchema';
 
 export function SignIn() {
-  const [user, loading] = useAuthState(auth);
+  const [user] = useAuthState(auth);
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [isLoginError, setIsLoginError] = useState(false);
@@ -26,11 +26,6 @@ export function SignIn() {
     mode: 'onTouched',
     resolver: yupResolver(userCredentialsSchemaSignIn),
   });
-
-  useEffect(() => {
-    if (loading) return;
-    if (user) navigate(Path.Main);
-  }, [user, loading, navigate]);
 
   const togglePasswordVisibility = (): void => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
