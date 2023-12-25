@@ -41,7 +41,7 @@ export function SignUp() {
     password,
   }) => {
     registerWithEmailAndPassword(name, email, password);
-    navigate(Path.Main);
+    if (user) navigate(Path.Main);
   };
 
   return (

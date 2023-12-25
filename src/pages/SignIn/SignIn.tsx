@@ -37,7 +37,7 @@ export function SignIn() {
 
   const onSubmit: SubmitHandler<ValidSignInData> = ({ email, password }) => {
     logInWithEmailAndPassword(email, password);
-    navigate(Path.Main);
+    if (user) navigate(Path.Main);
   };
 
   return (
