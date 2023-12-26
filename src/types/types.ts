@@ -23,3 +23,17 @@ export interface QueryResponse {
   data?: object;
   errors?: QueryError[];
 }
+export interface QueryRequest {
+  url: string;
+  query: string;
+  variables?: string;
+  headers?: object;
+}
+
+export type SchemaType = {
+  data: {
+    __schema: {
+      types: [object];
+    };
+  };
+};
