@@ -5,9 +5,9 @@
   height: 80vh; // calc (100vh - header- footer)
 
   display: grid;
-  grid-template-areas: 
-  "query-editor viewer"
-  "query-toolbar viewer"; 
+  grid-template-areas:
+    'query-editor viewer'
+    'query-toolbar viewer';
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 200px;
   column-gap: 20px;
