@@ -35,10 +35,20 @@ const router = createBrowserRouter([
       {
         path: Path.SignIn,
         element: <SignIn />,
+        loader: () => {
+          const user = auth.currentUser;
+          if (user) return redirect(Path.Main);
+          return null;
+        },
       },
       {
         path: Path.SignUp,
         element: <SignUp />,
+        loader: () => {
+          const user = auth.currentUser;
+          if (user) return redirect(Path.Main);
+          return null;
+        },
       },
       {
         path: Path.Page404,
