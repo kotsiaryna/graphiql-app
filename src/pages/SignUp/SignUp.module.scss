@@ -1,0 +1,31 @@
+@mixin flex-center() {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sign_up_section {
+  @include flex-center();
+  flex: 1 0 auto;
+  padding: 20px 10px;
+  width: 100%;
+  align-self: center;
+}
+
+.form {
+  @include flex-center();
+  flex-direction: column;
+  gap: 15px;
+  width: 850px;
+}
+
+.button_wrapper {
+  @include flex-center();
+  flex-direction: column;
+  gap: 10px;
+}
+
+.error_message {
+  color: red;
+  font-size: 1.2rem;
+}

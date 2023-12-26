@@ -33,6 +33,7 @@ module.exports = {
     'react/react-in-jsx-scope': 0,
     'import/prefer-default-export': 'off',
     '@typescript-eslint/no-explicit-any': 'error',
+    'no-console': ['warn', { allow: ['error'] }],
     'no-param-reassign': [
       'error',
       {
