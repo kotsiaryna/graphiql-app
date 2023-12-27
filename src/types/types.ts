@@ -37,3 +37,5 @@ export type SchemaType = {
     };
   };
 };
+
+export type Language = 'en' | 'ru';
