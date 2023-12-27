@@ -1,4 +1,8 @@
 import { useState } from 'react';
+import Button from '@mui/material/Button';
+
+import SendIcon from '@mui/icons-material/Send';
+import Tooltip from '@mui/material/Tooltip';
 import {
   deleteSchema,
   fetchSchema,
@@ -31,13 +35,12 @@ export function InputApi() {
         placeholder="Type graphQL endpoint here..."
         onChange={handleChange}
       />
-      <button
-        className={styles.endpoint__button}
-        type="button"
-        onClick={handleClick}
-      >
-        GO!
-      </button>
+
+      <Tooltip title="Send" placement="right">
+        <Button onClick={handleClick}>
+          <SendIcon color="primary" />
+        </Button>
+      </Tooltip>
     </section>
   );
 }
