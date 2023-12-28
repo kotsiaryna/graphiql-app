@@ -36,5 +36,3 @@ export const queryRequestSlice = createSlice({
 
 export const { addUrl, addHeaders, addVariables, addQuery } =
   queryRequestSlice.actions;
-
-export default queryRequestSlice.reducer;

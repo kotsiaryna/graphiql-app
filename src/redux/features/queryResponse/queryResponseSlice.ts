@@ -69,5 +69,3 @@ export const queryResponseSlice = createSlice({
 
 export const { deleteResponse, deleteResponseError } =
   queryResponseSlice.actions;
-
-export default queryResponseSlice.reducer;
