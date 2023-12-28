@@ -1,41 +1,39 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable consistent-return */
 import { useEffect, useRef } from 'react';
-import { useDispatch } from 'react-redux';
 import { basicSetup } from 'codemirror';
 import { EditorState, Text } from '@codemirror/state';
 import { EditorView, placeholder } from '@codemirror/view';
 import { json } from '@codemirror/lang-json';
+import { useAppDispatch } from '../../redux/hooks';
 import { QueryParamsEditorProps } from './types';
 
 export function QueryParamsEditor({
   setData,
   placeholderValue = '',
 }: QueryParamsEditorProps) {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const editorRef = useRef<HTMLDivElement>(null);
-
-  const handleChange = (state: EditorState) => {
-    const editorValue = state.doc.toString();
-    dispatch(setData(editorValue));
-  };
 
   useEffect(() => {
     if (!editorRef.current) return;
 
     const state = EditorState.create({
       doc: Text.of(['']),
-      extensions: [basicSetup, json(), placeholder(placeholderValue)],
+      extensions: [
+        basicSetup,
+        json(),
+        placeholder(placeholderValue),
+        EditorView.updateListener.of((e) => {
+          dispatch(setData(e.state.doc.toString()));
+        }),
+      ],
     });
 
     const editorView = new EditorView({
       state,
       parent: editorRef.current,
     });
-
-    editorView.dom.addEventListener('keyup', () =>
-      handleChange(editorView.state)
-    );
 
     return () => {
       editorView.destroy();
