@@ -2,8 +2,8 @@ $white: #EDEDED;
 $gray: #BFC0C0;
 $dark: #585959;
 
-.errorPage {
-    flex: 1 0 auto;
+.errorMessage {
+    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
