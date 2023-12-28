@@ -7,8 +7,8 @@ import { ElevationScroll } from './handler';
 
 import { WelcomeButton } from './components/WelcomeButton';
 import { HomeButton } from './components/HomeButton';
-import { SingnInButton } from './components/SignInButton';
-import { SingnUpButton } from './components/SignUpButton';
+import { SignInButton } from './components/SignInButton';
+import { SignUpButton } from './components/SignUpButton';
 import { TranslateButton } from './components/TranslateButton';
 import { SignOutButton } from './components/SignOutButton';
 import styles from './Header.module.scss';
@@ -29,8 +29,8 @@ export function Header() {
             >
               <WelcomeButton />
               <HomeButton />
-              {!user && <SingnInButton />}
-              {!user && <SingnUpButton />}
+              {!user && <SignInButton />}
+              {!user && <SignUpButton />}
               {user && <SignOutButton />}
               <TranslateButton />
             </Typography>

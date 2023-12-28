@@ -2,17 +2,17 @@ import { AuthorData } from '../types/types';
 
 export const authorsData: AuthorData[] = [
   {
-    name: 'Katsiaryna Talkachova',
+    name: { en: 'Katsiaryna Talkachova', ru: 'Екатерина Толкачева' },
     githubName: 'kotsiaryna',
     githubUrl: 'https://github.com/kotsiaryna',
   },
   {
-    name: 'Zhenja Fedko',
+    name: { en: 'Zhenja Fedko', ru: 'Евгения Федько' },
     githubName: 'fedko-zhenja',
     githubUrl: 'https://github.com/fedko-zhenja',
   },
   {
-    name: 'Ivan Timoshkin',
+    name: { en: 'Ivan Timoshkin', ru: 'Иван Тимошкин' },
     githubName: 'amberlynn364',
     githubUrl: 'https://github.com/amberlynn364',
   },

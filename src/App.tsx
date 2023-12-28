@@ -5,7 +5,7 @@ import { LangContext } from './context/langContext';
 import { Language } from './types/types';
 
 export function App() {
-  const [lang, setLang] = useState<Language>('ru');
+  const [lang, setLang] = useState<Language>('en');
 
   return (
     <LangContext.Provider value={{ lang, setLang }}>

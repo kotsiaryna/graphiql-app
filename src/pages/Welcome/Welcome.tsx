@@ -1,29 +1,33 @@
 import { Link } from 'react-router-dom';
+import { useContext } from 'react';
 import { Path } from '../../router/types';
 import { authorsData } from '../../data/data';
 import { AuthorData } from '../../types/types';
 import styles from './Welcome.module.scss';
+import { LangContext } from '../../context/langContext';
+import { i18n } from '../../data/localization';
 
 export function Welcome() {
+  const { lang } = useContext(LangContext);
   return (
     <div className={styles.welcomePage}>
       <div className={styles.welcomePage_links}>
-        <Link to={Path.SignIn}>Sign In</Link>
-        <Link to={Path.SignUp}>Sign Up</Link>
-        <Link to={Path.Main}>Home</Link>
+        <Link to={Path.SignIn}>{i18n[lang].signIn}</Link>
+        <Link to={Path.SignUp}>{i18n[lang].signUp}</Link>
+        <Link to={Path.Main}>{i18n[lang].main}</Link>
       </div>
 
       <div className={styles.welcomePage_content}>
         <div>
-          <h3>We greet you!</h3>
-          We are a React Rangers team consisting of three talented developers!
+          <h3>{i18n[lang].greeting}</h3>
+          {i18n[lang].about}
         </div>
 
         <ul className={styles.welcomePage_list}>
-          <h3>Team</h3>
+          <h3>{i18n[lang].team}</h3>
           {authorsData.map((author: AuthorData) => (
             <li key={author.githubName} className={styles.welcomePage_listItem}>
-              {author.name}
+              {author.name[lang]}
               <div>
                 GitHub:
                 <Link to={author.githubUrl} target="_blank">
@@ -34,25 +38,16 @@ export function Welcome() {
           ))}
         </ul>
 
-        <div>
-          We have successfully completed the JavaScript/Front-end 2023Q1 course
-          provided by RSSchool.
-        </div>
+        <div>{i18n[lang].completed}</div>
 
         <div>
           <h3>RSSchool</h3>
-          RSSchool is free-of-charge and community-based education program
-          conducted by The Rolling Scopes developer community since 2013.
+          {i18n[lang].rs}
         </div>
 
         <div>
-          <h3>Final task</h3>
-          We are actively studying on the React 2023 Q4 course. The final task
-          of the React 2023 Q4 course is creating a GraphiQL application.
-          GraphiQL is a convenient playground and development environment (IDE)
-          for sending queries in the GraphQL language. This application allows
-          developers to interactively test and debug their queries, making it a
-          powerful tool for working with GraphQL.
+          <h3>{i18n[lang].ft}</h3>
+          {i18n[lang].task}
         </div>
       </div>
     </div>

@@ -8,6 +8,7 @@ import MenuItem from '@mui/material/MenuItem';
 import Fade from '@mui/material/Fade';
 import { LangContext } from '../../../context/langContext';
 import { Language } from '../../../types/types';
+import { i18n } from '../../../data/localization';
 
 export function TranslateButton() {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -16,7 +17,7 @@ export function TranslateButton() {
   const enSelected = React.useRef(true);
   const ruSelected = React.useRef(false);
 
-  const { setLang } = React.useContext(LangContext);
+  const { lang, setLang } = React.useContext(LangContext);
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
@@ -50,7 +51,7 @@ export function TranslateButton() {
   return (
     <div>
       <Stack spacing={2} direction="row">
-        <Tooltip title="Translate">
+        <Tooltip title={i18n[lang].translate}>
           <IconButton
             id="fade-button"
             aria-controls={open ? 'fade-menu' : undefined}
