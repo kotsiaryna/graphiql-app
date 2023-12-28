@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { QueryRequest, QueryResponse } from '../../../types/types';
+import { ValidationError, parseString } from '../../../utils/validateRequest';
 
 export const fetchQuery = createAsyncThunk<
   QueryResponse,
@@ -10,9 +11,14 @@ export const fetchQuery = createAsyncThunk<
   'queryResponse/fetch',
   async ({ url, query, variables, headers }, { rejectWithValue }) => {
     try {
-      const body = { query, variables };
+      const parsedVariables = variables
+        ? parseString(variables, 'variables')
+        : {};
+      const parsedHeaders = headers ? parseString(headers, 'headers') : {};
+
+      const body = { query, variables: parsedVariables };
       const { data } = await axios.post<QueryResponse>(url, body, {
-        headers: { ...headers, 'Content-Type': 'application/json' },
+        headers: { ...parsedHeaders, 'Content-Type': 'application/json' },
         validateStatus: (status) => status < 500,
       });
       return data;
@@ -20,6 +26,8 @@ export const fetchQuery = createAsyncThunk<
       if (axios.isAxiosError(error)) {
         return rejectWithValue(error.message);
       }
+      if (error instanceof ValidationError)
+        return rejectWithValue(error.message);
       return rejectWithValue('An unexpected error occurred');
     }
   }
