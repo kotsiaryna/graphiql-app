@@ -5,14 +5,14 @@ export interface QueryRequestState {
   url: string;
   query: string;
   variables: string;
-  headers: object;
+  headers: string;
 }
 
 const initialState: QueryRequestState = {
   url: '',
   query: '',
   variables: '',
-  headers: {},
+  headers: '',
 };
 
 export const queryRequestSlice = createSlice({
@@ -28,7 +28,7 @@ export const queryRequestSlice = createSlice({
     addVariables: (state, action: PayloadAction<string>) => {
       state.variables = action.payload;
     },
-    addHeaders: (state, action: PayloadAction<object>) => {
+    addHeaders: (state, action: PayloadAction<string>) => {
       state.headers = action.payload;
     },
   },

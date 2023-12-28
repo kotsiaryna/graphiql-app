@@ -1,4 +1,6 @@
 .viewer {
   grid-area: viewer;
   padding: 10px;
+  overflow-y: auto;
+  scroll-behavior: smooth;
 }
