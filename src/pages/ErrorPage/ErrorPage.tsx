@@ -1,18 +1,25 @@
-import { useNavigate } from 'react-router-dom';
-import { Path } from '../../router/types';
-import { ErrorMessage } from '../../components/ErrorMessage/ErrorMessage';
+import styles from './ErrorPage.module.scss';
 
 export function ErrorPage() {
-  const navigate = useNavigate();
-
-  const redirectToWelcome = () => {
-    navigate(Path.Welcome);
+  const reloadPage = (): void => {
+    window.location.reload();
   };
 
   return (
-    <ErrorMessage
-      redirectName="go to welcome page"
-      redirectFunction={redirectToWelcome}
-    />
+    <div className={styles.errorPage}>
+      <h3 className={styles.errorPage__message}>
+        OOPS! Something went wrong...
+      </h3>
+
+      <div className={styles.errorPage__btnWrapper}>
+        <button
+          type="button"
+          className={styles.errorPage__btn}
+          onClick={reloadPage}
+        >
+          reload page
+        </button>
+      </div>
+    </div>
   );
 }
