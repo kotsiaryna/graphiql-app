@@ -1,36 +1,36 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { getQuery } from '../../../../api/getQuery';
+import { useSelector } from 'react-redux';
+import Button from '@mui/material/Button';
+import AutoFixHighIcon from '@mui/icons-material/AutoFixHigh';
+import PlayCircleOutlineIcon from '@mui/icons-material/PlayCircleOutline';
+import Tooltip from '@mui/material/Tooltip';
 import { QueryEditor } from '../QueryEditor/QueryEditor';
-import styles from './QueryEditorWrapper.module.scss';
 import { selectRequest } from '../../../../redux/features/queryRequest/queryRequestSelector';
-import { setError } from '../../../../redux/features/apiError/apiError';
-import { saveResponse } from '../../../../redux/features/queryResponse/queryResponseSlice';
+import { useAppDispatch } from '../../../../redux/hooks';
+import { fetchQuery } from '../../../../redux/features/queryResponse/queryResponseSlice';
+import styles from './QueryEditorWrapper.module.scss';
 
 export function QueryEditorWrapper() {
   const requestParams = useSelector(selectRequest);
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const handleExecuteClick = async () => {
-    const response = await getQuery(requestParams);
-    if (typeof response === 'string') {
-      dispatch(setError(response));
-    } else {
-      dispatch(saveResponse(response));
-    }
+    dispatch(fetchQuery(requestParams));
   };
+
   return (
     <div className={styles.queryEditor__wrapper}>
       <div className={styles.toolbar}>
-        <button className={styles.toolbar__button} type="button">
-          Prettify
-        </button>
-        <button
-          className={styles.toolbar__button}
-          type="button"
-          onClick={handleExecuteClick}
-        >
-          Execute
-        </button>
+        <Tooltip title="Prettify" placement="right">
+          <Button>
+            <AutoFixHighIcon color="primary" />
+          </Button>
+        </Tooltip>
+
+        <Tooltip title="Execute" placement="right">
+          <Button onClick={handleExecuteClick}>
+            <PlayCircleOutlineIcon color="primary" sx={{ fontSize: 30 }} />
+          </Button>
+        </Tooltip>
       </div>
       <QueryEditor />
     </div>

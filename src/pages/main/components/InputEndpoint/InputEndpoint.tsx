@@ -1,32 +1,30 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import styles from './InputEndpoint.module.scss';
-import { getSchema } from '../../../../api/getSchema';
-import { setError } from '../../../../redux/features/apiError/apiError';
+import Button from '@mui/material/Button';
+
+import SendIcon from '@mui/icons-material/Send';
+import Tooltip from '@mui/material/Tooltip';
 import {
   deleteSchema,
-  saveSchema,
+  fetchSchema,
 } from '../../../../redux/features/schema/schemaSlice';
 import { addUrl } from '../../../../redux/features/queryRequest/queryRequestSlice';
 import { deleteResponse } from '../../../../redux/features/queryResponse/queryResponseSlice';
+import { useAppDispatch } from '../../../../redux/hooks';
+import styles from './InputEndpoint.module.scss';
 
 export function InputApi() {
   const [value, setValue] = useState('');
+  const dispatch = useAppDispatch();
+
   const handleChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
     setValue(e.target.value);
+    dispatch(addUrl(e.target.value));
   };
-  const dispatch = useDispatch();
 
   const handleClick = async () => {
     dispatch(deleteResponse());
-    const result = await getSchema(value);
-    if (typeof result === 'string') {
-      dispatch(setError(result));
-      dispatch(deleteSchema());
-    } else {
-      dispatch(saveSchema(result));
-      dispatch(addUrl(value));
-    }
+    dispatch(deleteSchema());
+    dispatch(fetchSchema(value));
   };
 
   return (
@@ -37,13 +35,12 @@ export function InputApi() {
         placeholder="Type graphQL endpoint here..."
         onChange={handleChange}
       />
-      <button
-        className={styles.endpoint__button}
-        type="button"
-        onClick={handleClick}
-      >
-        GO!
-      </button>
+
+      <Tooltip title="Send" placement="right">
+        <Button onClick={handleClick}>
+          <SendIcon color="primary" />
+        </Button>
+      </Tooltip>
     </section>
   );
 }

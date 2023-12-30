@@ -10,7 +10,8 @@ import { selectQueryResponse } from '../../../../redux/features/queryResponse/qu
 import styles from './Viewer.module.scss';
 
 export function Viewer() {
-  const { data, errors } = useSelector(selectQueryResponse);
+  const { response } = useSelector(selectQueryResponse);
+  const { data, errors } = response;
   const viewerRef = useRef<HTMLDivElement>(null);
   const [view, setView] = useState<EditorView>();
 

@@ -1,26 +1,65 @@
-import { createSlice } from '@reduxjs/toolkit';
-import type { PayloadAction } from '@reduxjs/toolkit';
-import { QueryResponse } from '../../../types/types';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import axios from 'axios';
+import { QueryRequest, QueryResponse } from '../../../types/types';
 
-const initialState: QueryResponse = {
-  data: {},
-  errors: [{ message: '' }],
+export const fetchQuery = createAsyncThunk<
+  QueryResponse,
+  QueryRequest,
+  { rejectValue: string }
+>(
+  'queryResponse/fetch',
+  async ({ url, query, variables, headers }, { rejectWithValue }) => {
+    try {
+      const body = { query, variables };
+      const { data } = await axios.post<QueryResponse>(url, body, {
+        headers: { ...headers, 'Content-Type': 'application/json' },
+        validateStatus: (status) => status < 500,
+      });
+      return data;
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        return rejectWithValue(error.message);
+      }
+      return rejectWithValue('An unexpected error occurred');
+    }
+  }
+);
+
+type InitStateType = {
+  response: QueryResponse;
+  errorMessage: string | undefined;
+};
+
+const initialState: InitStateType = {
+  response: {},
+  errorMessage: undefined,
 };
 
 export const queryResponseSlice = createSlice({
   name: 'queryResponse',
   initialState,
   reducers: {
-    saveResponse: (_state, action: PayloadAction<QueryResponse>) => {
-      return action.payload;
-    },
     deleteResponse: (state) => {
-      delete state.data;
-      delete state.errors;
+      state.response = {};
     },
+    deleteResponseError: (state) => {
+      state.errorMessage = undefined;
+    },
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchQuery.fulfilled, (state, action) => {
+        state.response = action.payload;
+        state.errorMessage = undefined;
+      })
+      .addCase(fetchQuery.rejected, (state, action) => {
+        state.response = {};
+        state.errorMessage = action.payload;
+      });
   },
 });
 
-export const { saveResponse, deleteResponse } = queryResponseSlice.actions;
+export const { deleteResponse, deleteResponseError } =
+  queryResponseSlice.actions;
 
 export default queryResponseSlice.reducer;
