@@ -75,5 +75,3 @@ export const schemaSlice = createSlice({
 });
 
 export const { deleteSchema, deleteSchemaError } = schemaSlice.actions;
-
-export default schemaSlice.reducer;

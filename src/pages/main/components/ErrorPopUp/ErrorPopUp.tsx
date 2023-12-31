@@ -20,7 +20,7 @@ export function ErrorPopUp() {
   };
 
   return (
-    <ClickAwayListener onClickAway={handleClickAway}>
+    <ClickAwayListener onClickAway={handleClickAway} mouseEvent="onMouseDown">
       <Popup open={!!(schemaError || queryError)} disablePortal>
         {schemaError && (
           <p

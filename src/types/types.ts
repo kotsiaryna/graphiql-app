@@ -27,7 +27,7 @@ export interface QueryRequest {
   url: string;
   query: string;
   variables?: string;
-  headers?: object;
+  headers?: string;
 }
 
 export type SchemaType = {
