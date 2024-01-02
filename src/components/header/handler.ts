@@ -14,7 +14,7 @@ export function ElevationScroll(props: ElevationScrollProps): ReactElement {
   return React.cloneElement(children, {
     style: {
       justifyContent: 'center',
-      backgroundColor: trigger ? '#bfbfbf' : '#ededed',
+      backgroundColor: trigger ? '#0b446d' : '#19669c',
       borderBottom: '1px solid black',
       transition: 'background-color 0.3s ease',
     },
