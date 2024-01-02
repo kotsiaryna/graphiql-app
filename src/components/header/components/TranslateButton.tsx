@@ -1,12 +1,12 @@
 import Stack from '@mui/material/Stack';
 import IconButton from '@mui/material/IconButton';
 import TranslateIcon from '@mui/icons-material/Translate';
-import Tooltip from '@mui/material/Tooltip';
 
 import * as React from 'react';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Fade from '@mui/material/Fade';
+import { CustomTooltip } from '../../customComponents/customTooltip';
 
 export function TranslateButton() {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -23,7 +23,7 @@ export function TranslateButton() {
   return (
     <div>
       <Stack spacing={2} direction="row">
-        <Tooltip title="Translate">
+        <CustomTooltip title="Translate">
           <IconButton
             id="fade-button"
             aria-controls={open ? 'fade-menu' : undefined}
@@ -33,7 +33,7 @@ export function TranslateButton() {
           >
             <TranslateIcon />
           </IconButton>
-        </Tooltip>
+        </CustomTooltip>
       </Stack>
       <Menu
         id="fade-menu"
