@@ -10,7 +10,7 @@ import { useAppDispatch } from '../../../../redux/hooks';
 import { fetchQuery } from '../../../../redux/features/queryResponse/queryResponseSlice';
 import styles from './QueryEditorWrapper.module.scss';
 import { LangContext } from '../../../../context/langContext';
-import { i18n } from '../../../../data/localization';
+import { l10n } from '../../../../data/localization';
 
 export function QueryEditorWrapper() {
   const requestParams = useSelector(selectRequest);
@@ -25,13 +25,13 @@ export function QueryEditorWrapper() {
   return (
     <div className={styles.queryEditor__wrapper}>
       <div className={styles.toolbar}>
-        <Tooltip title={i18n[lang].prettify} placement="right">
+        <Tooltip title={l10n[lang].prettify} placement="right">
           <Button>
             <AutoFixHighIcon color="primary" />
           </Button>
         </Tooltip>
 
-        <Tooltip title={i18n[lang].execute} placement="right">
+        <Tooltip title={l10n[lang].execute} placement="right">
           <Button onClick={handleExecuteClick}>
             <PlayCircleOutlineIcon color="primary" sx={{ fontSize: 30 }} />
           </Button>

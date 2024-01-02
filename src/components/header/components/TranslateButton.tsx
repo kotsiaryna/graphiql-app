@@ -8,7 +8,7 @@ import MenuItem from '@mui/material/MenuItem';
 import Fade from '@mui/material/Fade';
 import { LangContext } from '../../../context/langContext';
 import { Language } from '../../../types/types';
-import { i18n } from '../../../data/localization';
+import { l10n } from '../../../data/localization';
 
 export function TranslateButton() {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -51,7 +51,7 @@ export function TranslateButton() {
   return (
     <div>
       <Stack spacing={2} direction="row">
-        <Tooltip title={i18n[lang].translate}>
+        <Tooltip title={l10n[lang].translate}>
           <IconButton
             id="fade-button"
             aria-controls={open ? 'fade-menu' : undefined}

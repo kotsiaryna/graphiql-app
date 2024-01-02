@@ -13,7 +13,7 @@ import { auth, registerWithEmailAndPassword } from '../../firebase';
 import { ValidSignUpData } from '../../types/types';
 import { userCredentialsSchemaSignUp } from '../../utils/userCredentialsSchema';
 import { LangContext } from '../../context/langContext';
-import { i18n } from '../../data/localization';
+import { l10n } from '../../data/localization';
 
 export function SignUp() {
   const [user] = useAuthState(auth);
@@ -51,7 +51,7 @@ export function SignUp() {
         <TextField
           {...register('name')}
           id="nameForm"
-          label={i18n[lang].name}
+          label={l10n[lang].name}
           name="name"
           error={!!errors.name?.message}
           helperText={errors && errors.name?.message}
@@ -63,7 +63,7 @@ export function SignUp() {
         <TextField
           {...register('email')}
           id="emailForm"
-          label={i18n[lang].email}
+          label={l10n[lang].email}
           name="email"
           error={!!errors.email?.message}
           helperText={errors && errors.email?.message}
@@ -75,7 +75,7 @@ export function SignUp() {
         <TextField
           {...register('password')}
           id="passwordForm"
-          label={i18n[lang].password}
+          label={l10n[lang].password}
           name="password"
           error={!!errors.password?.message}
           helperText={errors && errors.password?.message}
@@ -95,7 +95,7 @@ export function SignUp() {
           fullWidth
         />
         {isEmailError && (
-          <p className={styles.error_message}>{i18n[lang].regError}</p>
+          <p className={styles.error_message}>{l10n[lang].regError}</p>
         )}
         <div className={styles.button_wrapper}>
           <Button
@@ -103,10 +103,10 @@ export function SignUp() {
             variant="contained"
             disabled={!isDirty || !isValid || isLoading}
           >
-            {i18n[lang].reg}
+            {l10n[lang].reg}
           </Button>
           <Link to={Path.SignIn}>
-            <Button>{i18n[lang].logNow}</Button>
+            <Button>{l10n[lang].logNow}</Button>
           </Link>
         </div>
       </form>

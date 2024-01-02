@@ -5,7 +5,7 @@ import { useContext } from 'react';
 import { QueryToolbarControlsProps } from './types';
 import styles from './QueryToolbarControls.module.scss';
 import { LangContext } from '../../../../context/langContext';
-import { i18n } from '../../../../data/localization';
+import { l10n } from '../../../../data/localization';
 
 export function QueryToolbarControls({
   activeEditor,
@@ -26,7 +26,7 @@ export function QueryToolbarControls({
           type="button"
           onClick={() => setActiveEditor('Variables')}
         >
-          {i18n[lang].vars}
+          {l10n[lang].vars}
         </button>
         <button
           className={
@@ -37,7 +37,7 @@ export function QueryToolbarControls({
           type="button"
           onClick={() => setActiveEditor('Headers')}
         >
-          {i18n[lang].headers}
+          {l10n[lang].headers}
         </button>
       </div>
 

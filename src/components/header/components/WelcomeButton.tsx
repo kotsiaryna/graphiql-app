@@ -6,13 +6,13 @@ import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import { Path } from '../../../router/types';
 import { LangContext } from '../../../context/langContext';
-import { i18n } from '../../../data/localization';
+import { l10n } from '../../../data/localization';
 
 export function WelcomeButton() {
   const { lang } = useContext(LangContext);
   return (
     <Stack spacing={2} direction="row">
-      <Tooltip title={i18n[lang].welcome}>
+      <Tooltip title={l10n[lang].welcome}>
         <Link to={Path.Welcome}>
           <IconButton>
             <WavingHandIcon />

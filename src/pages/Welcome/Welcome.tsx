@@ -5,26 +5,26 @@ import { authorsData } from '../../data/data';
 import { AuthorData } from '../../types/types';
 import styles from './Welcome.module.scss';
 import { LangContext } from '../../context/langContext';
-import { i18n } from '../../data/localization';
+import { l10n } from '../../data/localization';
 
 export function Welcome() {
   const { lang } = useContext(LangContext);
   return (
     <div className={styles.welcomePage}>
       <div className={styles.welcomePage_links}>
-        <Link to={Path.SignIn}>{i18n[lang].signIn}</Link>
-        <Link to={Path.SignUp}>{i18n[lang].signUp}</Link>
-        <Link to={Path.Main}>{i18n[lang].main}</Link>
+        <Link to={Path.SignIn}>{l10n[lang].signIn}</Link>
+        <Link to={Path.SignUp}>{l10n[lang].signUp}</Link>
+        <Link to={Path.Main}>{l10n[lang].main}</Link>
       </div>
 
       <div className={styles.welcomePage_content}>
         <div>
-          <h3>{i18n[lang].greeting}</h3>
-          {i18n[lang].about}
+          <h3>{l10n[lang].greeting}</h3>
+          {l10n[lang].about}
         </div>
 
         <ul className={styles.welcomePage_list}>
-          <h3>{i18n[lang].team}</h3>
+          <h3>{l10n[lang].team}</h3>
           {authorsData.map((author: AuthorData) => (
             <li key={author.githubName} className={styles.welcomePage_listItem}>
               {author.name[lang]}
@@ -38,16 +38,16 @@ export function Welcome() {
           ))}
         </ul>
 
-        <div>{i18n[lang].completed}</div>
+        <div>{l10n[lang].completed}</div>
 
         <div>
           <h3>RSSchool</h3>
-          {i18n[lang].rs}
+          {l10n[lang].rs}
         </div>
 
         <div>
-          <h3>{i18n[lang].ft}</h3>
-          {i18n[lang].task}
+          <h3>{l10n[lang].ft}</h3>
+          {l10n[lang].task}
         </div>
       </div>
     </div>

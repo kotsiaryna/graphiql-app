@@ -13,7 +13,7 @@ import { Path } from '../../router/types';
 import styles from './SignIn.module.scss';
 import { userCredentialsSchemaSignIn } from '../../utils/userCredentialsSchema';
 import { LangContext } from '../../context/langContext';
-import { i18n } from '../../data/localization';
+import { l10n } from '../../data/localization';
 
 export function SignIn() {
   const [user] = useAuthState(auth);
@@ -48,7 +48,7 @@ export function SignIn() {
         <TextField
           {...register('email')}
           id="emailForm"
-          label={i18n[lang].email}
+          label={l10n[lang].email}
           name="email"
           error={!!errors.email?.message}
           helperText={errors && errors.email?.message}
@@ -60,7 +60,7 @@ export function SignIn() {
         <TextField
           {...register('password')}
           id="passwordForm"
-          label={i18n[lang].password}
+          label={l10n[lang].password}
           name="password"
           error={!!errors.password?.message}
           helperText={errors && errors.password?.message}
@@ -80,7 +80,7 @@ export function SignIn() {
           fullWidth
         />
         {isLoginError && (
-          <p className={styles.error_message}>{i18n[lang].loginError}</p>
+          <p className={styles.error_message}>{l10n[lang].loginError}</p>
         )}
         <div className={styles.button_wrapper}>
           <Button
@@ -88,10 +88,10 @@ export function SignIn() {
             variant="contained"
             disabled={!isDirty || !isValid || isLoading}
           >
-            {i18n[lang].login}
+            {l10n[lang].login}
           </Button>
           <Link to={Path.SignUp}>
-            <Button>{i18n[lang].regNow}</Button>
+            <Button>{l10n[lang].regNow}</Button>
           </Link>
         </div>
       </form>

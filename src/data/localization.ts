@@ -1,4 +1,4 @@
-export const i18n = {
+export const l10n = {
   en: {
     greeting: 'We greet you!',
     about:

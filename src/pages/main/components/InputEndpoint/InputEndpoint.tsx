@@ -11,7 +11,7 @@ import { addUrl } from '../../../../redux/features/queryRequest/queryRequestSlic
 import { deleteResponse } from '../../../../redux/features/queryResponse/queryResponseSlice';
 import { useAppDispatch } from '../../../../redux/hooks';
 import styles from './InputEndpoint.module.scss';
-import { i18n } from '../../../../data/localization';
+import { l10n } from '../../../../data/localization';
 import { LangContext } from '../../../../context/langContext';
 
 export function InputApi() {
@@ -36,11 +36,11 @@ export function InputApi() {
       <input
         className={styles.endpoint__input}
         value={value}
-        placeholder={i18n[lang].inputPlaceholder}
+        placeholder={l10n[lang].inputPlaceholder}
         onChange={handleChange}
       />
 
-      <Tooltip title={i18n[lang].send} placement="right">
+      <Tooltip title={l10n[lang].send} placement="right">
         <Button onClick={handleClick}>
           <SendIcon color="primary" />
         </Button>

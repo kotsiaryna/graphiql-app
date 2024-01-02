@@ -9,7 +9,7 @@ import { deleteSchemaError } from '../../../../redux/features/schema/schemaSlice
 import { useAppDispatch } from '../../../../redux/hooks';
 import styles from './ErrorPopUp.module.scss';
 import { LangContext } from '../../../../context/langContext';
-import { i18n } from '../../../../data/localization';
+import { l10n } from '../../../../data/localization';
 
 export function ErrorPopUp() {
   const dispatch = useAppDispatch();
@@ -28,12 +28,12 @@ export function ErrorPopUp() {
         {schemaError && (
           <p
             className={styles.popup}
-          >{`${i18n[lang].schemaError}: ${schemaError}`}</p>
+          >{`${l10n[lang].schemaError}: ${schemaError}`}</p>
         )}
         {queryError && (
           <p
             className={styles.popup}
-          >{`${i18n[lang].queryError}: ${queryError}`}</p>
+          >{`${l10n[lang].queryError}: ${queryError}`}</p>
         )}
       </Popup>
     </ClickAwayListener>
