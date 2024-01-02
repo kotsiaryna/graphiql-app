@@ -1,10 +1,15 @@
+@import '../../../../vars';
 .queryToolbar {
   grid-area: query-toolbar;
 
   &__editor {
-    height: calc(200px - 40px);
-    border: 1px solid black;
+    @include borders;
+    padding: 5px;
+    height: 160px;
     overflow-y: auto;
     scroll-behavior: smooth;
+  &::placeholder {
+    color: red;
+  }
   }
 }

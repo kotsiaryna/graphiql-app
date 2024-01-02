@@ -1,8 +1,10 @@
+@import '../../../../vars';
+
 .editor {
+  @include borders;
   grid-area: editor;
-  border: 1px solid black;
   padding: 10px;
-  height: 80vh; // calc (100vh - header- footer)
+  height: calc(100vh - 200px);
 
   display: grid;
   grid-template-areas:

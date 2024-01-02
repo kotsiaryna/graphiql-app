@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Button from '@mui/material/Button';
 
 import SendIcon from '@mui/icons-material/Send';
-import Tooltip from '@mui/material/Tooltip';
+
 import {
   deleteSchema,
   fetchSchema,
@@ -11,6 +11,7 @@ import { addUrl } from '../../../../redux/features/queryRequest/queryRequestSlic
 import { deleteResponse } from '../../../../redux/features/queryResponse/queryResponseSlice';
 import { useAppDispatch } from '../../../../redux/hooks';
 import styles from './InputEndpoint.module.scss';
+import { CustomTooltip } from '../../../../utils/customTooltip';
 
 export function InputApi() {
   const [value, setValue] = useState('');
@@ -30,17 +31,17 @@ export function InputApi() {
   return (
     <section className={styles.endpoint}>
       <input
-        className={styles.endpoint__input}
+        className={styles.input}
         value={value}
         placeholder="Type graphQL endpoint here..."
         onChange={handleChange}
       />
 
-      <Tooltip title="Send" placement="right">
+      <CustomTooltip title="Send" placement="right">
         <Button onClick={handleClick}>
           <SendIcon color="primary" />
         </Button>
-      </Tooltip>
+      </CustomTooltip>
     </section>
   );
 }

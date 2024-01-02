@@ -1,3 +1,5 @@
+@import '../../vars';
+
 .main {
   width: 100vw;
   padding: 15px;
@@ -9,4 +11,8 @@
     'editor doc';
 
   gap: 15px;
+
+  background-color: $main-bg-color;
+  color: $font-color;
+  font-family: $font-text;
 }
