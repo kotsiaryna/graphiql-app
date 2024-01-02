@@ -1,3 +1,5 @@
+@import '../../vars';
+
 $white: #EDEDED;
 $gray: #BFC0C0;
 $dark: #585959;
@@ -11,6 +13,7 @@ $light: #D3DEEA;
     gap: 20px;
 
     &__title {
+        font-family: $font-heading;
         color: $white;
         text-align: center;
         font-size: 9em;
@@ -19,6 +22,7 @@ $light: #D3DEEA;
     }
 
     &__subtitle {
+      font-family: $font-heading;
         font-size: 2em;
         text-transform: uppercase;
         text-align: center;
@@ -43,17 +47,16 @@ $light: #D3DEEA;
     }
 
     &__btn {
-        background: $white;
-        padding: 15px 20px;
-        color: $dark;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        border: 0;
-        transition: 0.2s;
-        cursor: pointer;
+      @include buttons;
+      width: fit-content;
+      height: fit-content;
+      padding: 15px 20px;
+      text-transform: uppercase;
+      transition: 0.2s;
+      cursor: pointer;
 
         &:hover {
-            background: $gray;
+          transform: scale(1.1);
         }
     }
 }
