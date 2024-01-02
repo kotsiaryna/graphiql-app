@@ -1,3 +1,5 @@
+@import '../../vars';
+
 .welcomePage {
   padding: 25px;
   flex: 1 0 auto;
@@ -6,7 +8,12 @@
   align-items: center;
   text-align: center;
 
-  &_links {
+  background-color: $main-bg-color;
+  color: $font-color;
+  font-family: $font-text;
+}
+
+  .links {
     width: 100%;
     display: flex;
     justify-content: end;
@@ -14,7 +21,7 @@
     font-weight: bolder;
   }
 
-  &_content {
+  .content {
     padding: 20px;
     max-width: 800px;
     display: flex;
@@ -23,16 +30,29 @@
     align-items: center;
     font-size: 18px;
     line-height: 35px;
+    text-align: justify;
   }
 
-  &_list {
+  .list {
     display: flex;
     flex-direction: column;
     width: fit-content;
     gap: 15px;
   }
 
-  &_listItem {
-    text-align: left;
+  .listItem {
+    display: flex;
+    align-items: center;
+    gap: 5px;
   }
-}
+  .gh_icon {
+    width: fit-content;
+    height: 25px;
+  }
+  .heading {
+    font-family: $font-heading;
+    font-size: 1.5em;
+    margin-bottom: 15px;
+    text-decoration: underline;
+    text-align: center;
+  }
