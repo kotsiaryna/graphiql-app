@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Button, IconButton, InputAdornment, TextField } from '@mui/material';
+import { IconButton, InputAdornment } from '@mui/material';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import { ValidSignInData } from '../../types/types';
@@ -12,6 +12,7 @@ import { auth, logInWithEmailAndPassword } from '../../firebase';
 import { Path } from '../../router/types';
 import styles from './SignIn.module.scss';
 import { userCredentialsSchemaSignIn } from '../../utils/userCredentialsSchema';
+import { CustomTextField } from '../../components/customComponents/customTextField';
 
 export function SignIn() {
   const [user] = useAuthState(auth);
@@ -41,7 +42,7 @@ export function SignIn() {
   return (
     <section className={styles.sign_up_section}>
       <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
-        <TextField
+        <CustomTextField
           {...register('email')}
           id="emailForm"
           label="Email"
@@ -53,7 +54,7 @@ export function SignIn() {
           margin="none"
           fullWidth
         />
-        <TextField
+        <CustomTextField
           {...register('password')}
           id="passwordForm"
           label="Password"
@@ -65,7 +66,7 @@ export function SignIn() {
           InputProps={{
             endAdornment: (
               <InputAdornment position="end">
-                <IconButton onClick={togglePasswordVisibility}>
+                <IconButton onClick={togglePasswordVisibility} color="primary">
                   {showPassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
                 </IconButton>
               </InputAdornment>
@@ -79,15 +80,16 @@ export function SignIn() {
           <p className={styles.error_message}>Incorrect email or password</p>
         )}
         <div className={styles.button_wrapper}>
-          <Button
+          <button
             type="submit"
-            variant="contained"
+            className={styles.button}
+            // variant="contained"
             disabled={!isDirty || !isValid || isLoading}
           >
             Login
-          </Button>
-          <Link to={Path.SignUp}>
-            <Button>Don&apos;t have an account? Register now.</Button>
+          </button>
+          <Link className={styles.link} to={Path.SignUp}>
+            Don&apos;t have an account? Register now.
           </Link>
         </div>
       </form>
