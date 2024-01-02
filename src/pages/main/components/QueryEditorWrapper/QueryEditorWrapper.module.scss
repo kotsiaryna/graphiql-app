@@ -3,9 +3,13 @@
 .queryEditor__wrapper {
  @include borders;
  grid-area: query-editor;
+ height: fit-content;
  display: flex;
  flex-direction: row-reverse;
  padding: 5px;
+ @media screen and (max-width: 500px) {
+  flex-direction: column;
+ }
 
 }
 
@@ -14,8 +18,15 @@
   height: 100%;
   padding: 20px 0;
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   align-items: center;
+  justify-content: flex-end;
   gap: 40px;
+  @media screen and (max-width: 500px) {
+    height: 40px;
+    width: 100%;
+    flex-direction: row;
+    justify-content: center;
+   }
 
 }
