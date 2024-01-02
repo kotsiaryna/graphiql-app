@@ -1,0 +1,40 @@
+$white: #EDEDED;
+$gray: #BFC0C0;
+$dark: #585959;
+
+.errorPage {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 30px;
+
+    &__message {
+        font-size: 2em;
+        text-transform: uppercase;
+        text-align: center;
+        color: $gray;
+        font-weight: 900;
+    }
+
+    &__btnWrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__btn {
+        background: $white;
+        padding: 15px 20px;
+        color: $dark;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        border: 0;
+        transition: 0.2s;
+        cursor: pointer;
+
+        &:hover {
+            background: $gray;
+        }
+    }
+}
