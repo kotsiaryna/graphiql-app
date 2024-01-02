@@ -11,7 +11,7 @@ import { addUrl } from '../../../../redux/features/queryRequest/queryRequestSlic
 import { deleteResponse } from '../../../../redux/features/queryResponse/queryResponseSlice';
 import { useAppDispatch } from '../../../../redux/hooks';
 import styles from './InputEndpoint.module.scss';
-import { CustomTooltip } from '../../../../utils/customTooltip';
+import { CustomTooltip } from '../../../../components/customComponents/customTooltip';
 
 export function InputApi() {
   const [value, setValue] = useState('');

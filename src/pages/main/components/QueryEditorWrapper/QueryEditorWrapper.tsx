@@ -7,7 +7,7 @@ import { selectRequest } from '../../../../redux/features/queryRequest/queryRequ
 import { useAppDispatch } from '../../../../redux/hooks';
 import { fetchQuery } from '../../../../redux/features/queryResponse/queryResponseSlice';
 import styles from './QueryEditorWrapper.module.scss';
-import { CustomTooltip } from '../../../../utils/customTooltip';
+import { CustomTooltip } from '../../../../components/customComponents/customTooltip';
 
 export function QueryEditorWrapper() {
   const requestParams = useSelector(selectRequest);
