@@ -4,14 +4,20 @@ export function handlePrettify(query: string) {
   let prettyQuery = '';
 
   if (query) {
-    const queryString = query.trim();
+    const queryString = query.trim().replace(/(\r\n|\n|\r)/gm, '');
 
     for (let i = 0; i < queryString.length; i++) {
       switch (queryString[i]) {
         case '{': {
-          openBracketCount++;
-          prettyQuery += `${queryString[i]}\n`;
-          prettyQuery += ' '.repeat(openBracketCount * 2);
+          if (queryString[i + 1] === ' ') {
+            prettyQuery += `${queryString[i]}`;
+            openBracketCount++;
+          } else {
+            openBracketCount++;
+            prettyQuery += `${queryString[i]}\n`;
+            prettyQuery += ' '.repeat(openBracketCount * 2);
+          }
+
           break;
         }
 
@@ -19,6 +25,7 @@ export function handlePrettify(query: string) {
           prettyQuery += `\n${' '.repeat(openBracketCount * 2 - 2)}`;
           openBracketCount--;
           prettyQuery += queryString[i];
+
           break;
         }
 
@@ -35,6 +42,11 @@ export function handlePrettify(query: string) {
           if (queryString[i + 1] === '{') {
             prettyQuery += queryString[i];
           }
+
+          if (queryString[i + 1] === ' ') {
+            prettyQuery += '';
+          }
+
           break;
         }
 
