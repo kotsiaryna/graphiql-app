@@ -7,7 +7,6 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Fade from '@mui/material/Fade';
 import { LangContext } from '../../../context/langContext';
-import { Language } from '../../../types/types';
 import { l10n } from '../../../data/localization';
 
 export function TranslateButton() {
@@ -28,22 +27,25 @@ export function TranslateButton() {
   };
 
   const changeLanguage: React.MouseEventHandler<HTMLElement> = (e) => {
-    const langValue = e.currentTarget.innerText.toLowerCase() as Language; // todo can we type this without assertion?
+    const langValue = e.currentTarget.innerText;
     if (setLang) {
-      setLang(langValue);
-    }
-    switch (langValue) {
-      case 'en':
-        ruSelected.current = false;
-        enSelected.current = true;
-        break;
-      case 'ru':
-        ruSelected.current = true;
-        enSelected.current = false;
-        break;
-      default:
-        ruSelected.current = false;
-        enSelected.current = true;
+      switch (langValue) {
+        case 'EN':
+        case 'АНГЛ':
+          ruSelected.current = false;
+          enSelected.current = true;
+          setLang('en');
+          break;
+        case 'RU':
+        case 'РУС':
+          ruSelected.current = true;
+          enSelected.current = false;
+          setLang('ru');
+          break;
+        default:
+          ruSelected.current = false;
+          enSelected.current = true;
+      }
     }
     handleClose();
   };
@@ -74,10 +76,10 @@ export function TranslateButton() {
         TransitionComponent={Fade}
       >
         <MenuItem selected={enSelected.current} onClick={changeLanguage}>
-          EN
+          {l10n[lang].en}
         </MenuItem>
         <MenuItem selected={ruSelected.current} onClick={changeLanguage}>
-          RU
+          {l10n[lang].ru}
         </MenuItem>
       </Menu>
     </div>

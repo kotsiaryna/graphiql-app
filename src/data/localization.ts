@@ -37,6 +37,8 @@ export const l10n = {
     logNow: 'Already have an account? Login now',
     loginError: 'Incorrect email or password',
     regError: 'Email already exist',
+    ru: 'RU',
+    en: 'EN',
   },
   ru: {
     greeting: 'Приветствуем Вас!',
@@ -62,7 +64,7 @@ export const l10n = {
     execute: 'Выполнить',
     headers: 'Заголовки',
     vars: 'Переменные',
-    email: 'Емэйл',
+    email: 'Электронная почта',
     password: 'Пароль',
     login: 'Войти',
     regNow: `Нет аккаунта? Зарегистрируйся.`,
@@ -71,5 +73,7 @@ export const l10n = {
     logNow: 'Уже есть аккаунт? Войти.',
     loginError: 'Неверный емэйл или пароль',
     regError: 'Емэйл уже существует',
+    ru: 'РУС',
+    en: 'АНГЛ',
   },
 };
