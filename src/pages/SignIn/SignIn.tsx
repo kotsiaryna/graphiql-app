@@ -1,5 +1,4 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, useNavigate } from 'react-router-dom';
 import { useContext, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
@@ -8,7 +7,7 @@ import { Button, IconButton, InputAdornment, TextField } from '@mui/material';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import { ValidSignInData } from '../../types/types';
-import { auth, logInWithEmailAndPassword } from '../../firebase';
+import { logInWithEmailAndPassword } from '../../firebase';
 import { Path } from '../../router/types';
 import styles from './SignIn.module.scss';
 import { userCredentialsSchemaSignIn } from '../../utils/userCredentialsSchema';
@@ -16,7 +15,6 @@ import { LangContext } from '../../context/langContext';
 import { l10n } from '../../data/localization';
 
 export function SignIn() {
-  const [user] = useAuthState(auth);
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [isLoginError, setIsLoginError] = useState(false);
@@ -36,8 +34,8 @@ export function SignIn() {
   const onSubmit: SubmitHandler<ValidSignInData> = ({ email, password }) => {
     logInWithEmailAndPassword(email, password)
       .then(() => setIsLoginError(false))
+      .then(() => navigate(Path.Main))
       .catch(() => setIsLoginError(true));
-    if (user) navigate(Path.Main);
   };
 
   const { lang } = useContext(LangContext);

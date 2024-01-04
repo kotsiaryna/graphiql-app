@@ -3,20 +3,18 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Button, IconButton, InputAdornment, TextField } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
-import { useAuthState } from 'react-firebase-hooks/auth';
 import { useContext, useState } from 'react';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import styles from './SignUp.module.scss';
 import { Path } from '../../router/types';
-import { auth, registerWithEmailAndPassword } from '../../firebase';
+import { registerWithEmailAndPassword } from '../../firebase';
 import { ValidSignUpData } from '../../types/types';
 import { userCredentialsSchemaSignUp } from '../../utils/userCredentialsSchema';
 import { LangContext } from '../../context/langContext';
 import { l10n } from '../../data/localization';
 
 export function SignUp() {
-  const [user] = useAuthState(auth);
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [isEmailError, setIsEmailError] = useState(false);
@@ -40,8 +38,8 @@ export function SignUp() {
   }) => {
     registerWithEmailAndPassword(name, email, password)
       .then(() => setIsEmailError(false))
+      .then(() => navigate(Path.Main))
       .catch(() => setIsEmailError(true));
-    if (user) navigate(Path.Main);
   };
   const { lang } = useContext(LangContext);
 
