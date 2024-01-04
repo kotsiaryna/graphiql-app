@@ -13,7 +13,7 @@ import { TranslateButton } from './components/TranslateButton';
 import { SignOutButton } from './components/SignOutButton';
 import styles from './Header.module.scss';
 import { auth } from '../../firebase';
-import { HeaderSkeleton } from './components/HeaderSkeleton';
+import { SkeletonList } from '../SkeletonList/SkeletonList';
 
 export function Header() {
   const [user, loading] = useAuthState(auth);
@@ -46,7 +46,12 @@ export function Header() {
                   <TranslateButton />
                 </>
               ) : (
-                <HeaderSkeleton count={4} width={22} height={22} />
+                <SkeletonList
+                  variant="circular"
+                  count={4}
+                  width={22}
+                  height={22}
+                />
               )}
             </Typography>
           </Toolbar>

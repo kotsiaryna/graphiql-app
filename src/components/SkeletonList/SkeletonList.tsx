@@ -1,16 +1,16 @@
 import { Skeleton, Stack } from '@mui/material';
+import { SkeletonListProps } from './SkeletonListTypes';
 
-interface HeaderSkeletonProps {
-  count: number;
-  width: number;
-  height: number;
-}
-
-export function HeaderSkeleton({ count, width, height }: HeaderSkeletonProps) {
+export function SkeletonList({
+  variant,
+  count,
+  width,
+  height,
+}: SkeletonListProps) {
   const skeletons = Array.from({ length: count }, (_, index) => (
     <Skeleton
       key={index}
-      variant="circular"
+      variant={variant}
       animation="wave"
       width={width}
       height={height}
