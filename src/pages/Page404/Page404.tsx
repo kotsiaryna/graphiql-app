@@ -12,8 +12,8 @@ export function Page404() {
   return (
     <div className={styles.page404}>
       <div>
-        <h1 className={styles.page404__title}>404</h1>
-        <h3 className={styles.page404__subtitle}>page not found</h3>
+        <h1 className={styles.title}>404</h1>
+        <h3 className={styles.subtitle}>page not found</h3>
       </div>
 
       <div className={styles.ghostContainer}>
@@ -35,13 +35,11 @@ export function Page404() {
         <div className={styles.ghostContainer__shadow} />
       </div>
 
-      <p className={styles.page404__message}>
-        Boo, looks like a ghost stole this page!
-      </p>
-      <div className={styles.page404__btnWrapper}>
+      <p className={styles.message}>Boo, looks like a ghost stole this page!</p>
+      <div className={styles.btnWrapper}>
         <button
           type="button"
-          className={styles.page404__btn}
+          className={styles.btn}
           onClick={redirectToWelcome}
         >
           go to welcome page

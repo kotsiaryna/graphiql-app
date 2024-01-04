@@ -1,7 +1,7 @@
 $main-bg-color:#fcfcfa;
 $font-color:#1a405f;
 $error-color:#b32947;
-$second-bg-color: #19669c;
+$second-bg-color: #2780c0;
 
 $base-font-size: 16px;
 $font-text: 'Roboto', sans-serif;
@@ -20,6 +20,7 @@ $font-heading: 'Diphylleia', serif;
   font-family: $font-heading;
   font-weight: bold;
   letter-spacing: 0.1em;
+
 } 
 @mixin disabled {
   cursor: default;
