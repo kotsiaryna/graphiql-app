@@ -1,8 +1,11 @@
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import IconButton from '@mui/material/IconButton';
+import { useContext } from 'react';
 import { QueryToolbarControlsProps } from './types';
 import styles from './QueryToolbarControls.module.scss';
+import { LangContext } from '../../../../context/langContext';
+import { l10n } from '../../../../data/localization';
 
 export function QueryToolbarControls({
   activeEditor,
@@ -10,6 +13,7 @@ export function QueryToolbarControls({
   changeEditorVisibility,
   isShowEditor,
 }: QueryToolbarControlsProps) {
+  const { lang } = useContext(LangContext);
   return (
     <div className={styles.queryToolbarControls}>
       <div className={styles.editorButtons}>
@@ -20,7 +24,7 @@ export function QueryToolbarControls({
           type="button"
           onClick={() => setActiveEditor('Variables')}
         >
-          Variables
+          {l10n[lang].vars}
         </button>
         <button
           className={
@@ -29,7 +33,7 @@ export function QueryToolbarControls({
           type="button"
           onClick={() => setActiveEditor('Headers')}
         >
-          Headers
+          {l10n[lang].headers}
         </button>
       </div>
 

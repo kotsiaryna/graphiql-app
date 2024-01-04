@@ -4,7 +4,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { IconButton, InputAdornment } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import styles from './SignUp.module.scss';
@@ -13,6 +13,8 @@ import { auth, registerWithEmailAndPassword } from '../../firebase';
 import { ValidSignUpData } from '../../types/types';
 import { userCredentialsSchemaSignUp } from '../../utils/userCredentialsSchema';
 import { CustomTextField } from '../../components/customComponents/customTextField';
+import { LangContext } from '../../context/langContext';
+import { l10n } from '../../data/localization';
 
 export function SignUp() {
   const [user] = useAuthState(auth);
@@ -42,6 +44,7 @@ export function SignUp() {
       .catch(() => setIsEmailError(true));
     if (user) navigate(Path.Main);
   };
+  const { lang } = useContext(LangContext);
 
   return (
     <section className={styles.sign_up_section}>
@@ -49,7 +52,7 @@ export function SignUp() {
         <CustomTextField
           {...register('name')}
           id="nameForm"
-          label="Name"
+          label={l10n[lang].name}
           name="name"
           error={!!errors.name?.message}
           helperText={errors && errors.name?.message}
@@ -61,7 +64,7 @@ export function SignUp() {
         <CustomTextField
           {...register('email')}
           id="emailForm"
-          label="Email"
+          label={l10n[lang].email}
           name="email"
           error={!!errors.email?.message}
           helperText={errors && errors.email?.message}
@@ -73,7 +76,7 @@ export function SignUp() {
         <CustomTextField
           {...register('password')}
           id="passwordForm"
-          label="Password"
+          label={l10n[lang].password}
           name="password"
           error={!!errors.password?.message}
           helperText={errors && errors.password?.message}
@@ -93,19 +96,18 @@ export function SignUp() {
           fullWidth
         />
         {isEmailError && (
-          <p className={styles.error_message}>Email already exist</p>
+          <p className={styles.error_message}>{l10n[lang].regError}</p>
         )}
         <div className={styles.button_wrapper}>
           <button
             type="submit"
             className={styles.button}
-            // variant="contained"
             disabled={!isDirty || !isValid || isLoading}
           >
-            Register
+            {l10n[lang].reg}
           </button>
           <Link to={Path.SignIn} className={styles.link}>
-            Already have an account? Login now
+            {l10n[lang].logNow}
           </Link>
         </div>
       </form>

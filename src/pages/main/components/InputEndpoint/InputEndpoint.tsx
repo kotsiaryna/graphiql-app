@@ -1,8 +1,6 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import Button from '@mui/material/Button';
-
 import SendIcon from '@mui/icons-material/Send';
-
 import {
   deleteSchema,
   fetchSchema,
@@ -12,10 +10,14 @@ import { deleteResponse } from '../../../../redux/features/queryResponse/queryRe
 import { useAppDispatch } from '../../../../redux/hooks';
 import styles from './InputEndpoint.module.scss';
 import { CustomTooltip } from '../../../../components/customComponents/customTooltip';
+import { l10n } from '../../../../data/localization';
+import { LangContext } from '../../../../context/langContext';
 
 export function InputApi() {
   const [value, setValue] = useState('');
   const dispatch = useAppDispatch();
+
+  const { lang } = useContext(LangContext);
 
   const handleChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
     setValue(e.target.value);
@@ -33,12 +35,12 @@ export function InputApi() {
       <input
         className={styles.input}
         value={value}
-        placeholder="Type graphQL endpoint here..."
+        placeholder={l10n[lang].inputPlaceholder}
         onChange={handleChange}
       />
 
-      <CustomTooltip title="Send" placement="right">
-        <Button onClick={handleClick}>
+      <CustomTooltip title={l10n[lang].send} placement="right">
+         <Button onClick={handleClick}>
           <SendIcon color="primary" />
         </Button>
       </CustomTooltip>
