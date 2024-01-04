@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Button, IconButton, InputAdornment, TextField } from '@mui/material';
@@ -12,6 +12,8 @@ import { auth, logInWithEmailAndPassword } from '../../firebase';
 import { Path } from '../../router/types';
 import styles from './SignIn.module.scss';
 import { userCredentialsSchemaSignIn } from '../../utils/userCredentialsSchema';
+import { LangContext } from '../../context/langContext';
+import { l10n } from '../../data/localization';
 
 export function SignIn() {
   const [user] = useAuthState(auth);
@@ -38,13 +40,15 @@ export function SignIn() {
     if (user) navigate(Path.Main);
   };
 
+  const { lang } = useContext(LangContext);
+
   return (
     <section className={styles.sign_up_section}>
       <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
         <TextField
           {...register('email')}
           id="emailForm"
-          label="Email"
+          label={l10n[lang].email}
           name="email"
           error={!!errors.email?.message}
           helperText={errors && errors.email?.message}
@@ -56,7 +60,7 @@ export function SignIn() {
         <TextField
           {...register('password')}
           id="passwordForm"
-          label="Password"
+          label={l10n[lang].password}
           name="password"
           error={!!errors.password?.message}
           helperText={errors && errors.password?.message}
@@ -76,7 +80,7 @@ export function SignIn() {
           fullWidth
         />
         {isLoginError && (
-          <p className={styles.error_message}>Incorrect email or password</p>
+          <p className={styles.error_message}>{l10n[lang].loginError}</p>
         )}
         <div className={styles.button_wrapper}>
           <Button
@@ -84,10 +88,10 @@ export function SignIn() {
             variant="contained"
             disabled={!isDirty || !isValid || isLoading}
           >
-            Login
+            {l10n[lang].login}
           </Button>
           <Link to={Path.SignUp}>
-            <Button>Don&apos;t have an account? Register now.</Button>
+            <Button>{l10n[lang].regNow}</Button>
           </Link>
         </div>
       </form>

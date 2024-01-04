@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import Button from '@mui/material/Button';
 
 import SendIcon from '@mui/icons-material/Send';
@@ -11,10 +11,14 @@ import { addUrl } from '../../../../redux/features/queryRequest/queryRequestSlic
 import { deleteResponse } from '../../../../redux/features/queryResponse/queryResponseSlice';
 import { useAppDispatch } from '../../../../redux/hooks';
 import styles from './InputEndpoint.module.scss';
+import { l10n } from '../../../../data/localization';
+import { LangContext } from '../../../../context/langContext';
 
 export function InputApi() {
   const [value, setValue] = useState('');
   const dispatch = useAppDispatch();
+
+  const { lang } = useContext(LangContext);
 
   const handleChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
     setValue(e.target.value);
@@ -32,11 +36,11 @@ export function InputApi() {
       <input
         className={styles.endpoint__input}
         value={value}
-        placeholder="Type graphQL endpoint here..."
+        placeholder={l10n[lang].inputPlaceholder}
         onChange={handleChange}
       />
 
-      <Tooltip title="Send" placement="right">
+      <Tooltip title={l10n[lang].send} placement="right">
         <Button onClick={handleClick}>
           <SendIcon color="primary" />
         </Button>

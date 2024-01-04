@@ -10,7 +10,7 @@ export interface ValidSignInData
   extends yup.InferType<typeof userCredentialsSchemaSignIn> {}
 
 export interface AuthorData {
-  name: string;
+  name: { en: string; ru: string };
   githubName: string;
   githubUrl: string;
 }
@@ -37,3 +37,5 @@ export type SchemaType = {
     };
   };
 };
+
+export type Language = 'en' | 'ru';
