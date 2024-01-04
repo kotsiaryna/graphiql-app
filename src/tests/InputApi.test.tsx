@@ -2,7 +2,7 @@ import '@testing-library/jest-dom';
 import { fireEvent, render, screen } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { InputApi } from '../pages/main/components/InputEndpoint/InputEndpoint';
-import { setupStore } from '../redux/store';
+import { setupStore } from './mockStore';
 
 const store = setupStore();
 
