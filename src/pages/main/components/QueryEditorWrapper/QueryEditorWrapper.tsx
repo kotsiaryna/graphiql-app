@@ -25,7 +25,7 @@ export function QueryEditorWrapper() {
   return (
     <div className={styles.queryEditor__wrapper}>
       <div className={styles.toolbar}>
-        <CustomTooltip title={l10n[lang].prettify placement="right">
+        <CustomTooltip title={l10n[lang].prettify} placement="right">
           <Button>
             <AutoFixHighIcon color="primary" />
           </Button>

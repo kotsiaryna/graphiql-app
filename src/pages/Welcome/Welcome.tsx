@@ -12,11 +12,11 @@ export function Welcome() {
   const { lang } = useContext(LangContext);
   return (
     <div className={styles.welcomePage}>
-     <div className={styles.links}>
+      <div className={styles.links}>
         <Link to={Path.SignIn}>{l10n[lang].signIn}</Link>
         <Link to={Path.SignUp}>{l10n[lang].signUp}</Link>
         <Link to={Path.Main}>{l10n[lang].main}</Link>
-     </div>
+      </div>
 
       <div className={styles.content}>
         <div>
@@ -31,7 +31,7 @@ export function Welcome() {
               {`${author.name[lang]}: `}
               <img className={styles.gh_icon} src={ghIcon} alt="" />
               <Link to={author.githubUrl} target="_blank">
-                 {author.githubName}
+                {author.githubName}
               </Link>
             </li>
           ))}

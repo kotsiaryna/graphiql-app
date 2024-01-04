@@ -8,7 +8,6 @@ import { CustomTooltip } from '../../customComponents/customTooltip';
 import { LangContext } from '../../../context/langContext';
 import { l10n } from '../../../data/localization';
 
-
 export function SignInButton() {
   const { lang } = useContext(LangContext);
   return (

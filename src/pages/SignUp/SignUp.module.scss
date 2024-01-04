@@ -32,6 +32,8 @@
 }
 .button {
   @include buttons;
+  width: fit-content;
+  padding: 0 10px;
   background-color: $second-bg-color;
   color: $main-bg-color;
   text-transform: uppercase;

@@ -40,7 +40,7 @@ export function InputApi() {
       />
 
       <CustomTooltip title={l10n[lang].send} placement="right">
-         <Button onClick={handleClick}>
+        <Button onClick={handleClick}>
           <SendIcon color="primary" />
         </Button>
       </CustomTooltip>
