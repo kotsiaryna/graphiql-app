@@ -1,23 +1,23 @@
 .queryToolbarControls {
-    padding-right: 5px;
-    height: 40px;
+  padding-right: 5px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &__editorButtons {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    gap: 20px;
+  }
 
-    &__editorButtons {
-        display: flex;
-        gap: 20px;
-    }
+  &__button {
+    padding: 5px 10px;
+  }
 
-    &__button {
-        padding: 5px 10px;
-    }
-
-    &__activeButton {
-        padding: 5px 10px;
-        background-color: #c7deeb;
-        border-color: transparent;
-        border-radius: 3px;
-    }
+  &__activeButton {
+    padding: 5px 10px;
+    background-color: #c7deeb;
+    border-color: transparent;
+    border-radius: 3px;
+  }
 }

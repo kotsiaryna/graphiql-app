@@ -1,194 +1,198 @@
-$white: #EDEDED;
-$gray: #BFC0C0;
+$white: #ededed;
+$gray: #bfc0c0;
 $dark: #585959;
-$light: #D3DEEA;
+$light: #d3deea;
 
 .page404 {
-    flex: 1 0 auto;
-    padding: 30px;
+  flex: 1 0 auto;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  &__title {
+    color: $white;
+    text-align: center;
+    font-size: 9em;
+    margin: 0;
+    text-shadow:
+      -1px 0 $gray,
+      0 1px $gray,
+      1px 0 $gray,
+      0 -1px $gray;
+  }
+
+  &__subtitle {
+    font-size: 2em;
+    text-transform: uppercase;
+    text-align: center;
+    color: $gray;
+    margin-top: -20px;
+    font-weight: 900;
+  }
+
+  &__message {
+    text-align: center;
+    color: $dark;
+    font-size: 13px;
+    margin-top: -20px;
+    text-transform: uppercase;
+  }
+
+  &__btnWrapper {
     display: flex;
-    flex-direction: column;
-    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+  }
 
-    &__title {
-        color: $white;
-        text-align: center;
-        font-size: 9em;
-        margin: 0;
-        text-shadow: -1px 0 $gray, 0 1px $gray, 1px 0 $gray, 0 -1px $gray;
+  &__btn {
+    background: $white;
+    padding: 15px 20px;
+    color: $dark;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: 0;
+    transition: 0.2s;
+    cursor: pointer;
+
+    &:hover {
+      background: $gray;
     }
-
-    &__subtitle {
-        font-size: 2em;
-        text-transform: uppercase;
-        text-align: center;
-        color: $gray;
-        margin-top: -20px;
-        font-weight: 900;
-    }
-
-    &__message {
-        text-align: center;
-        color: $dark;
-        font-size: 13px;
-        margin-top: -20px;
-        text-transform: uppercase;
-    }
-
-    &__btnWrapper {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-top: 10px;
-    }
-
-    &__btn {
-        background: $white;
-        padding: 15px 20px;
-        color: $dark;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        border: 0;
-        transition: 0.2s;
-        cursor: pointer;
-
-        &:hover {
-            background: $gray;
-        }
-    }
+  }
 }
 
 .ghostContainer {
-    margin: 0 auto;
-    position: relative;
-    width: 250px;
-    height: 250px;
+  margin: 0 auto;
+  position: relative;
+  width: 250px;
+  height: 250px;
 
-    &__shadow {
-        position: absolute;
-        width: 30%;
-        height: 7%;
-        background: $gray;
-        left: 35%;
-        top: 80%;
-        border-radius: 50%;
-        animation: scale 2s infinite;
-    }
+  &__shadow {
+    position: absolute;
+    width: 30%;
+    height: 7%;
+    background: $gray;
+    left: 35%;
+    top: 80%;
+    border-radius: 50%;
+    animation: scale 2s infinite;
+  }
 }
 
 .ghostBody {
-    width: 50%;
-    height: 53%;
-    left: 25%;
-    top: 10%;
+  width: 50%;
+  height: 53%;
+  left: 25%;
+  top: 10%;
+  position: absolute;
+  border-radius: 50% 50% 0 0;
+  background: $white;
+  border: 1px solid $gray;
+  border-bottom: none;
+  animation: float 2s ease-out infinite;
+
+  &__face {
     position: absolute;
-    border-radius: 50% 50% 0 0;
-    background: $white;
-    border: 1px solid $gray;
-    border-bottom: none;
-    animation: float 2s ease-out infinite;
+    width: 100%;
+    height: 60%;
+    top: 20%;
+  }
 
-    &__face {
-        position: absolute;
-        width: 100%;
-        height: 60%;
-        top: 20%;
-    }
+  &__eye,
+  &__eyeRight {
+    position: absolute;
+    background: $dark;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    top: 40%;
+  }
 
-    &__eye,
-    &__eyeRight {
-        position: absolute;
-        background: $dark;
-        width: 13px;
-        height: 13px;
-        border-radius: 50%;
-        top: 40%;
-    }
+  &__eye {
+    left: 25%;
+  }
 
-    &__eye {
-        left: 25%;
-    }
+  &__eyeRight {
+    right: 25%;
+  }
 
-    &__eyeRight {
-        right: 25%;
-    }
-
-    &__mouth {
-        position: absolute;
-        top: 50%;
-        left: 46%;
-        width: 10px;
-        height: 10px;
-        border: 3px solid;
-        border-radius: 50%;
-        border-color: transparent $dark $dark transparent;
-        transform: rotate(45deg);
-    }
+  &__mouth {
+    position: absolute;
+    top: 50%;
+    left: 46%;
+    width: 10px;
+    height: 10px;
+    border: 3px solid;
+    border-radius: 50%;
+    border-color: transparent $dark $dark transparent;
+    transform: rotate(45deg);
+  }
 }
 
 .ghostTentacles {
-    width: 50%;
-    height: 53%;
-    left: 25%;
-    top: 10%;
+  width: 50%;
+  height: 53%;
+  left: 25%;
+  top: 10%;
+  position: absolute;
+  border-radius: 50% 50% 0 0;
+  background: $white;
+  border: 1px solid $gray;
+  border-bottom: none;
+  animation: float 2s ease-out infinite;
+  z-index: 0;
+
+  &__first,
+  &__second,
+  &__third,
+  &__fourth {
     position: absolute;
-    border-radius: 50% 50% 0 0;
     background: $white;
+    top: 85%;
+    width: 25%;
+    height: 23%;
     border: 1px solid $gray;
-    border-bottom: none;
-    animation: float 2s ease-out infinite;
     z-index: 0;
+  }
 
-    &__first,
-    &__second,
-    &__third,
-    &__fourth {
-        position: absolute;
-        background: $white;
-        top: 85%;
-        width: 25%;
-        height: 23%;
-        border: 1px solid $gray;
-        z-index: 0;
-    }
+  &__first {
+    border-radius: 0 0 100% 30%;
+    left: -1px;
+  }
 
-    &__first {
-        border-radius: 0 0 100% 30%;
-        left: -1px;
-    }
+  &__second {
+    left: 23%;
+    border-radius: 0 0 50% 50%;
+  }
 
-    &__second {
-        left: 23%;
-        border-radius: 0 0 50% 50%;
-    }
+  &__third {
+    left: 50%;
+    border-radius: 0 0 50% 50%;
+  }
 
-    &__third {
-        left: 50%;
-        border-radius: 0 0 50% 50%;
-    }
-
-    &__fourth {
-        left: 76%;
-        border-radius: 0 0 30% 100%;
-    }
+  &__fourth {
+    left: 76%;
+    border-radius: 0 0 30% 100%;
+  }
 }
 
 @keyframes scale {
-    0% {
-        transform: scale(1);
-    }
+  0% {
+    transform: scale(1);
+  }
 
-    50% {
-        transform: scale(1.1);
-    }
+  50% {
+    transform: scale(1.1);
+  }
 
-    100% {
-        transform: scale(1);
-    }
+  100% {
+    transform: scale(1);
+  }
 }
 
 @keyframes float {
-    50% {
-        transform: translateY(15px);
-    }
+  50% {
+    transform: translateY(15px);
+  }
 }

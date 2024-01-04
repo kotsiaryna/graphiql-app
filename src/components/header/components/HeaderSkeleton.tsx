@@ -1,4 +1,3 @@
-/* eslint-disable react/no-array-index-key */
 import { Skeleton, Stack } from '@mui/material';
 
 interface HeaderSkeletonProps {
