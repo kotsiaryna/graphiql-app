@@ -50,5 +50,5 @@ export function Viewer() {
     }
   }, [errors, data]);
 
-  return <div className={styles.viewer} ref={viewerRef} />;
+  return <div data-testid="viewer" className={styles.viewer} ref={viewerRef} />;
 }
