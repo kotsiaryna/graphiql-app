@@ -2,6 +2,7 @@
 
 .main {
   width: 100%;
+  min-height: calc(100vh - 60px - 126px);
   padding: 15px;
   display: grid;
   grid-template-columns: 2fr 1fr;
@@ -21,9 +22,11 @@
       'editor'
       'doc';
   }
+
   @media screen and (max-width: 700px) {
     grid-template-rows: 30px auto auto;
   }
+
   @media screen and (max-width: 500px) {
     grid-template-rows: 60px auto auto;
   }

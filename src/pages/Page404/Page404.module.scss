@@ -6,69 +6,72 @@ $dark: #585959;
 $light: #D3DEEA;
 
 .page404 {
-    height: calc(100vh - 60px - 126px);
+    min-height: calc(100vh - 60px - 126px);
     padding: 30px;
     display: flex;
     flex-direction: column;
     gap: 20px;
+
     @media screen and (max-width: 700px) {
-      height: calc(100vh - 57px - 118px);
+        height: calc(100vh - 57px - 118px);
     }
-  }
+}
 
-  .title {
-        font-family: $font-heading;
-        color: $white;
-        text-align: center;
-        font-size: 9em;
-        margin: 0;
-        text-shadow: -1px 0 $gray, 0 1px $gray, 1px 0 $gray, 0 -1px $gray;
-        @media screen and (max-width: 700px) {
-          font-size: 6em;
-        }
+.title {
+    font-family: $font-heading;
+    color: $white;
+    text-align: center;
+    font-size: 9em;
+    margin: 0;
+    text-shadow: -1px 0 $gray, 0 1px $gray, 1px 0 $gray, 0 -1px $gray;
+
+    @media screen and (max-width: 700px) {
+        font-size: 6em;
     }
+}
 
-    .subtitle {
-      font-family: $font-heading;
-        font-size: 2em;
-        text-transform: uppercase;
-        text-align: center;
-        color: $gray;
-        margin-top: -20px;
-        font-weight: 900;
-        @media screen and (max-width: 700px) {
-          font-size: 1em;
-        }
+.subtitle {
+    font-family: $font-heading;
+    font-size: 2em;
+    text-transform: uppercase;
+    text-align: center;
+    color: $gray;
+    margin-top: -20px;
+    font-weight: 900;
+
+    @media screen and (max-width: 700px) {
+        font-size: 1em;
     }
+}
 
-    .message {
-        text-align: center;
-        color: $dark;
-        font-size: 13px;
-        margin-top: -20px;
-        text-transform: uppercase;
+.message {
+    text-align: center;
+    color: $dark;
+    font-size: 13px;
+    margin-top: -20px;
+    text-transform: uppercase;
+}
+
+.btnWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.btn {
+    @include buttons;
+    width: fit-content;
+    height: fit-content;
+    padding: 15px 20px;
+    text-transform: uppercase;
+    transition: 0.2s;
+    cursor: pointer;
+
+    &:hover {
+        transform: scale(1.1);
     }
-
-    .btnWrapper {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-top: 10px;
-    }
-
-    .btn {
-      @include buttons;
-      width: fit-content;
-      height: fit-content;
-      padding: 15px 20px;
-      text-transform: uppercase;
-      transition: 0.2s;
-      cursor: pointer;
-
-        &:hover {
-          transform: scale(1.1);
-        }
-    }
+}
 
 .ghostContainer {
     margin: 0 auto;
