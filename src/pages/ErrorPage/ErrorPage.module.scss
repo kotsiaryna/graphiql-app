@@ -1,40 +1,43 @@
-$white: #ededed;
-$gray: #bfc0c0;
+@import '../../vars';
+
+$white: #EDEDED;
+$gray: #BFC0C0;
 $dark: #585959;
 
 .errorPage {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 30px;
-
-  &__message {
-    font-size: 2em;
-    text-transform: uppercase;
-    text-align: center;
-    color: $gray;
-    font-weight: 900;
-  }
-
-  &__btnWrapper {
+    height: 100vh;
     display: flex;
-    align-items: center;
+    flex-direction: column;
     justify-content: center;
-  }
+    gap: 30px;
 
-  &__btn {
-    background: $white;
-    padding: 15px 20px;
-    color: $dark;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    border: 0;
-    transition: 0.2s;
-    cursor: pointer;
-
-    &:hover {
-      background: $gray;
+    &__message {
+        font-size: 2em;
+        text-transform: uppercase;
+        text-align: center;
+        font-family: $font-heading;
+        color: $gray;
+        font-weight: 900;
     }
-  }
+
+    &__btnWrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__btn {
+      @include buttons;
+      width: fit-content;
+      height: fit-content;
+      padding: 15px 20px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: 0.2s;
+      cursor: pointer;
+
+        &:hover {
+          transform: scale(1.1);
+        }
+    }
 }

@@ -1,8 +1,6 @@
 import { useContext, useState } from 'react';
 import Button from '@mui/material/Button';
-
 import SendIcon from '@mui/icons-material/Send';
-import Tooltip from '@mui/material/Tooltip';
 import {
   deleteSchema,
   fetchSchema,
@@ -11,6 +9,7 @@ import { addUrl } from '../../../../redux/features/queryRequest/queryRequestSlic
 import { deleteResponse } from '../../../../redux/features/queryResponse/queryResponseSlice';
 import { useAppDispatch } from '../../../../redux/hooks';
 import styles from './InputEndpoint.module.scss';
+import { CustomTooltip } from '../../../../components/customComponents/customTooltip';
 import { l10n } from '../../../../data/localization';
 import { LangContext } from '../../../../context/langContext';
 
@@ -34,17 +33,17 @@ export function InputApi() {
   return (
     <section className={styles.endpoint}>
       <input
-        className={styles.endpoint__input}
+        className={styles.input}
         value={value}
         placeholder={l10n[lang].inputPlaceholder}
         onChange={handleChange}
       />
 
-      <Tooltip title={l10n[lang].send} placement="right">
+      <CustomTooltip title={l10n[lang].send} placement="right">
         <Button onClick={handleClick}>
           <SendIcon color="primary" />
         </Button>
-      </Tooltip>
+      </CustomTooltip>
     </section>
   );
 }

@@ -5,15 +5,11 @@ import { selectSchemaResponse } from '../../../../redux/features/schema/schemaSe
 export function DocExplorer() {
   const { data } = useSelector(selectSchemaResponse); // todo parse data;
   return (
-    <>
-      {data && (
-        <section className={styles.doc}>
-          <h3 className={styles.doc__heading}>Docs</h3>
-
-          <div className={styles.doc__data}>{JSON.stringify(data)}</div>
-        </section>
-      )}
-      <p />
-    </>
+    data && (
+      <section className={styles.doc}>
+        <h3 className={styles.heading}>Docs</h3>
+        <div className={styles.data}>{JSON.stringify(data)}</div>
+      </section>
+    )
   );
 }

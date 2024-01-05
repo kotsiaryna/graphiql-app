@@ -1,23 +1,24 @@
+@import '../../../../vars';
+
 .queryToolbarControls {
-  padding-right: 5px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  &__editorButtons {
+    padding-right: 5px;
+    height: 40px;
     display: flex;
-    gap: 20px;
-  }
-
-  &__button {
-    padding: 5px 10px;
-  }
-
-  &__activeButton {
-    padding: 5px 10px;
-    background-color: #c7deeb;
-    border-color: transparent;
-    border-radius: 3px;
-  }
+    align-items: center;
+    justify-content: space-between;
 }
+
+    .editorButtons {
+        display: flex;
+        gap: 20px;
+    }
+
+    .button {
+       @include buttons;
+       background-color: $main-bg-color;
+       color: $font-color;
+    }
+
+    .activeButton {
+        @include buttons;
+    }

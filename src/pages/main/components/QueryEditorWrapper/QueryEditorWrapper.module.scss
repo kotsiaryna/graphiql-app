@@ -1,18 +1,32 @@
+@import '../../../../vars';
+
 .queryEditor__wrapper {
-  border: 1px solid black;
-  border-radius: 5px;
-  grid-area: query-editor;
+ @include borders;
+ grid-area: query-editor;
+ height: fit-content;
+ display: flex;
+ flex-direction: row-reverse;
+ padding: 5px;
+ @media screen and (max-width: 500px) {
+  flex-direction: column;
+ }
+
 }
 
 .toolbar {
-  width: 100%;
-  height: 40px;
+  width: 40px;
+  height: 100%;
+  padding: 20px 0;
   display: flex;
+  flex-direction: column-reverse;
   align-items: center;
-  justify-content: space-around;
+  justify-content: flex-end;
+  gap: 40px;
+  @media screen and (max-width: 500px) {
+    height: 40px;
+    width: 100%;
+    flex-direction: row;
+    justify-content: center;
+   }
 
-  &__button {
-    height: 30px;
-    padding: 0 10px;
-  }
 }

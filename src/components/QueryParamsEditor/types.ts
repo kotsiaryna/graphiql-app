@@ -8,4 +8,5 @@ export interface QueryParamsEditorProps {
     | 'queryRequest/addQuery'
   >;
   placeholderValue?: string;
+  initialValue?: string;
 }
