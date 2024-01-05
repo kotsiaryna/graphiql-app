@@ -1,12 +1,37 @@
+@import '../../vars';
+
 .main {
-  width: 100vw;
+  width: 100%;
+  min-height: calc(100vh - 60px - 126px);
   padding: 15px;
   display: grid;
-  grid-template-columns: 1fr 300px;
-  grid-template-rows: 50px 1fr;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: 30px 1fr;
   grid-template-areas:
     'endpoint doc'
     'editor doc';
 
   gap: 15px;
+
+  @media screen and (max-width:900px) {
+    height: fit-content;
+    grid-template-columns: 1fr;
+    grid-template-rows: 30px 800px auto;
+    grid-template-areas:
+      'endpoint'
+      'editor'
+      'doc';
+  }
+
+  @media screen and (max-width: 700px) {
+    grid-template-rows: 30px auto auto;
+  }
+
+  @media screen and (max-width: 500px) {
+    grid-template-rows: 60px auto auto;
+  }
+
+  background-color: $main-bg-color;
+  color: $font-color;
+  font-family: $font-text;
 }

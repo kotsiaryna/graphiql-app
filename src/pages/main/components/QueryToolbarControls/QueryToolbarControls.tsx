@@ -1,8 +1,11 @@
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import IconButton from '@mui/material/IconButton';
+import { useContext } from 'react';
 import { QueryToolbarControlsProps } from './types';
 import styles from './QueryToolbarControls.module.scss';
+import { LangContext } from '../../../../context/langContext';
+import { l10n } from '../../../../data/localization';
 
 export function QueryToolbarControls({
   activeEditor,
@@ -10,38 +13,35 @@ export function QueryToolbarControls({
   changeEditorVisibility,
   isShowEditor,
 }: QueryToolbarControlsProps) {
+  const { lang } = useContext(LangContext);
   return (
     <div className={styles.queryToolbarControls}>
-      <div className={styles.queryToolbarControls__editorButtons}>
+      <div className={styles.editorButtons}>
         <button
           className={
-            activeEditor === 'Variables'
-              ? styles.queryToolbarControls__activeButton
-              : styles.queryToolbarControls__button
+            activeEditor === 'Variables' ? styles.activeButton : styles.button
           }
           type="button"
           onClick={() => setActiveEditor('Variables')}
         >
-          Variables
+          {l10n[lang].vars}
         </button>
         <button
           className={
-            activeEditor === 'Headers'
-              ? styles.queryToolbarControls__activeButton
-              : styles.queryToolbarControls__button
+            activeEditor === 'Headers' ? styles.activeButton : styles.button
           }
           type="button"
           onClick={() => setActiveEditor('Headers')}
         >
-          Headers
+          {l10n[lang].headers}
         </button>
       </div>
 
       <IconButton disableRipple edge="end" onClick={changeEditorVisibility}>
         {isShowEditor ? (
-          <KeyboardArrowDownIcon fontSize="medium" />
+          <KeyboardArrowDownIcon fontSize="medium" color="primary" />
         ) : (
-          <KeyboardArrowUpIcon fontSize="medium" />
+          <KeyboardArrowUpIcon fontSize="medium" color="primary" />
         )}
       </IconButton>
     </div>

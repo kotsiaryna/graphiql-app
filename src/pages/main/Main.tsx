@@ -7,10 +7,10 @@ import { ErrorPopUp } from './components/ErrorPopUp/ErrorPopUp';
 export function Main() {
   return (
     <main className={styles.main}>
-      <ErrorPopUp />
       <InputApi />
       <DocExplorer />
       <Editor />
+      <ErrorPopUp />
     </main>
   );
 }

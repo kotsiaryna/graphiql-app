@@ -1,23 +1,27 @@
+@import '../../../../vars';
+
 .doc {
   grid-area: doc;
-  height: calc(80vh + 65px); // calc (100vh - header - footer)
-  border: 1px solid black;
+  height: 825px;
+  @include borders;
   padding: 10px;
-
   overflow-y: scroll;
   scroll-behavior: smooth;
+  @media screen and (max-width: 900px) {
+   height: 500px;
+  }
+  @media screen and (max-width: 700px) {
+   height: 400px;
+  }
+}
 
-  &__heading {
+  .heading {
     width: 100%;
     line-height: 40px;
     text-align: center;
+    font-family: $font-heading;
   }
 
-  &__error {
-    color: rgb(168, 10, 10);
-  }
-
-  &__data {
+ .data {
     font-size: 1em;
   }
-}

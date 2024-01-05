@@ -1,22 +1,38 @@
+@import '../../../../vars';
+
 .endpoint {
   grid-area: endpoint;
-  width: 350px;
-  height: 30px;
+  width: 500px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-
-  &__input {
-    width: 85%;
-    height: 100%;
-    padding: 0 10px;
-  }
-
-  &__button {
-    height: 100%;
-    padding: 0 7px;
-    &:hover {
-      cursor: pointer;
-    }
+  align-items: center;
+  @media screen and (max-width: 500px) {
+    width: 100%;
+    flex-direction: column;
   }
 }
+
+  .input {
+    width: 85%;
+    height: 30px;
+    padding: 0 10px;
+    color: $font-color;
+    font-family: $font-text;
+    @include borders;
+    &::placeholder {
+      color: $font-color;
+      font-family: $font-heading;
+      opacity: 0.9;
+     }
+     @media screen and (max-width: 500px) {
+      width: 95%;
+      }
+    &:focus {
+      outline: none;
+      @include borders;
+      border-width: 2px;
+    } 
+
+  }
+

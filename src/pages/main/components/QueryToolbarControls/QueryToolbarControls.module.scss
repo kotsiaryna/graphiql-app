@@ -1,23 +1,25 @@
+@import '../../../../vars';
+
 .queryToolbarControls {
     padding-right: 5px;
     height: 40px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
 
-    &__editorButtons {
+    .editorButtons {
         display: flex;
         gap: 20px;
     }
 
-    &__button {
-        padding: 5px 10px;
+    .button {
+       @include buttons;
+       background-color: $main-bg-color;
+       color: $font-color;
+
     }
 
-    &__activeButton {
-        padding: 5px 10px;
-        background-color: #c7deeb;
-        border-color: transparent;
-        border-radius: 3px;
+    .activeButton {
+        @include buttons;
     }
-}
