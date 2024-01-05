@@ -33,7 +33,6 @@ export function Welcome() {
         ) : (
           <SkeletonList variant="text" count={2} width={45} height={25} />
         )}
-
       </div>
       <div className={styles.content}>
         <div>
