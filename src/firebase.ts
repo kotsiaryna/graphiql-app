@@ -3,7 +3,6 @@ import {
   getAuth,
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
-  sendPasswordResetEmail,
   signOut,
 } from 'firebase/auth';
 import { getFirestore, collection, addDoc } from 'firebase/firestore';
@@ -51,14 +50,6 @@ const registerWithEmailAndPassword = async (
   }
 };
 
-const sendPasswordReset = async (email: string) => {
-  try {
-    await sendPasswordResetEmail(auth, email);
-  } catch (err) {
-    console.error(err);
-  }
-};
-
 const logout = () => {
   signOut(auth);
 };
@@ -68,6 +59,5 @@ export {
   db,
   logInWithEmailAndPassword,
   registerWithEmailAndPassword,
-  sendPasswordReset,
   logout,
 };

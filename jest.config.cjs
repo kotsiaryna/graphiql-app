@@ -9,4 +9,5 @@ module.exports = {
   moduleNameMapper: {
     '^.+\\.(css|scss|png)$': 'babel-jest',
   },
+  setupFilesAfterEnv: ['./src/tests/setup.ts'],
 };

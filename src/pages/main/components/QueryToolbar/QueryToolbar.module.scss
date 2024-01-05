@@ -8,8 +8,8 @@
     height: 180px;
     overflow-y: auto;
     scroll-behavior: smooth;
-  &::placeholder {
-    color: red;
-  }
+    &::placeholder {
+      color: red;
+    }
   }
 }
