@@ -15,13 +15,22 @@
   }
 }
 
-  .heading {
+.heading {
     width: 100%;
-    line-height: 40px;
+    line-height: 2;
     text-align: center;
     font-family: $font-heading;
   }
 
- .data {
+.data {
     font-size: 1em;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: fit-content;
+    margin: 0 auto;
+
   }
+.name {
+  font-weight: bold;
+}
