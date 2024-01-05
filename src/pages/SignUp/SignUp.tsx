@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Button, IconButton, InputAdornment, TextField } from '@mui/material';
+import { IconButton, InputAdornment } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useContext, useState } from 'react';
@@ -12,6 +12,7 @@ import { Path } from '../../router/types';
 import { auth, registerWithEmailAndPassword } from '../../firebase';
 import { ValidSignUpData } from '../../types/types';
 import { userCredentialsSchemaSignUp } from '../../utils/userCredentialsSchema';
+import { CustomTextField } from '../../components/customComponents/customTextField';
 import { LangContext } from '../../context/langContext';
 import { l10n } from '../../data/localization';
 
@@ -48,7 +49,7 @@ export function SignUp() {
   return (
     <section className={styles.sign_up_section}>
       <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
-        <TextField
+        <CustomTextField
           {...register('name')}
           id="nameForm"
           label={l10n[lang].name}
@@ -60,7 +61,7 @@ export function SignUp() {
           margin="none"
           fullWidth
         />
-        <TextField
+        <CustomTextField
           {...register('email')}
           id="emailForm"
           label={l10n[lang].email}
@@ -72,7 +73,7 @@ export function SignUp() {
           margin="none"
           fullWidth
         />
-        <TextField
+        <CustomTextField
           {...register('password')}
           id="passwordForm"
           label={l10n[lang].password}
@@ -84,7 +85,7 @@ export function SignUp() {
           InputProps={{
             endAdornment: (
               <InputAdornment position="end">
-                <IconButton onClick={togglePasswordVisibility}>
+                <IconButton onClick={togglePasswordVisibility} color="primary">
                   {showPassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
                 </IconButton>
               </InputAdornment>
@@ -98,15 +99,15 @@ export function SignUp() {
           <p className={styles.error_message}>{l10n[lang].regError}</p>
         )}
         <div className={styles.button_wrapper}>
-          <Button
+          <button
             type="submit"
-            variant="contained"
+            className={styles.button}
             disabled={!isDirty || !isValid || isLoading}
           >
             {l10n[lang].reg}
-          </Button>
-          <Link to={Path.SignIn}>
-            <Button>{l10n[lang].logNow}</Button>
+          </button>
+          <Link to={Path.SignIn} className={styles.link}>
+            {l10n[lang].logNow}
           </Link>
         </div>
       </form>

@@ -16,12 +16,10 @@ export function QueryToolbarControls({
   const { lang } = useContext(LangContext);
   return (
     <div className={styles.queryToolbarControls}>
-      <div className={styles.queryToolbarControls__editorButtons}>
+      <div className={styles.editorButtons}>
         <button
           className={
-            activeEditor === 'Variables'
-              ? styles.queryToolbarControls__activeButton
-              : styles.queryToolbarControls__button
+            activeEditor === 'Variables' ? styles.activeButton : styles.button
           }
           type="button"
           onClick={() => setActiveEditor('Variables')}
@@ -30,9 +28,7 @@ export function QueryToolbarControls({
         </button>
         <button
           className={
-            activeEditor === 'Headers'
-              ? styles.queryToolbarControls__activeButton
-              : styles.queryToolbarControls__button
+            activeEditor === 'Headers' ? styles.activeButton : styles.button
           }
           type="button"
           onClick={() => setActiveEditor('Headers')}
@@ -43,9 +39,9 @@ export function QueryToolbarControls({
 
       <IconButton disableRipple edge="end" onClick={changeEditorVisibility}>
         {isShowEditor ? (
-          <KeyboardArrowDownIcon fontSize="medium" />
+          <KeyboardArrowDownIcon fontSize="medium" color="primary" />
         ) : (
-          <KeyboardArrowUpIcon fontSize="medium" />
+          <KeyboardArrowUpIcon fontSize="medium" color="primary" />
         )}
       </IconButton>
     </div>

@@ -1,60 +1,75 @@
+@import '../../vars';
+
 $white: #EDEDED;
 $gray: #BFC0C0;
 $dark: #585959;
 $light: #D3DEEA;
 
 .page404 {
-    flex: 1 0 auto;
+    min-height: calc(100vh - 60px - 126px);
     padding: 30px;
     display: flex;
     flex-direction: column;
     gap: 20px;
 
-    &__title {
-        color: $white;
-        text-align: center;
-        font-size: 9em;
-        margin: 0;
-        text-shadow: -1px 0 $gray, 0 1px $gray, 1px 0 $gray, 0 -1px $gray;
+    @media screen and (max-width: 700px) {
+        height: calc(100vh - 57px - 118px);
     }
+}
 
-    &__subtitle {
-        font-size: 2em;
-        text-transform: uppercase;
-        text-align: center;
-        color: $gray;
-        margin-top: -20px;
-        font-weight: 900;
+.title {
+    font-family: $font-heading;
+    color: $white;
+    text-align: center;
+    font-size: 9em;
+    margin: 0;
+    text-shadow: -1px 0 $gray, 0 1px $gray, 1px 0 $gray, 0 -1px $gray;
+
+    @media screen and (max-width: 700px) {
+        font-size: 6em;
     }
+}
 
-    &__message {
-        text-align: center;
-        color: $dark;
-        font-size: 13px;
-        margin-top: -20px;
-        text-transform: uppercase;
+.subtitle {
+    font-family: $font-heading;
+    font-size: 2em;
+    text-transform: uppercase;
+    text-align: center;
+    color: $gray;
+    margin-top: -20px;
+    font-weight: 900;
+
+    @media screen and (max-width: 700px) {
+        font-size: 1em;
     }
+}
 
-    &__btnWrapper {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-top: 10px;
-    }
+.message {
+    text-align: center;
+    color: $dark;
+    font-size: 13px;
+    margin-top: -20px;
+    text-transform: uppercase;
+}
 
-    &__btn {
-        background: $white;
-        padding: 15px 20px;
-        color: $dark;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        border: 0;
-        transition: 0.2s;
-        cursor: pointer;
+.btnWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+}
 
-        &:hover {
-            background: $gray;
-        }
+.btn {
+    @include buttons;
+    width: fit-content;
+    height: fit-content;
+    padding: 15px 20px;
+    text-transform: uppercase;
+    transition: 0.2s;
+    cursor: pointer;
+
+    &:hover {
+        transform: scale(1.1);
     }
 }
 

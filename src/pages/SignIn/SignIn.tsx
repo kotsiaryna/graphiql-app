@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useContext, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Button, IconButton, InputAdornment, TextField } from '@mui/material';
+import { IconButton, InputAdornment } from '@mui/material';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import { ValidSignInData } from '../../types/types';
@@ -12,6 +12,7 @@ import { auth, logInWithEmailAndPassword } from '../../firebase';
 import { Path } from '../../router/types';
 import styles from './SignIn.module.scss';
 import { userCredentialsSchemaSignIn } from '../../utils/userCredentialsSchema';
+import { CustomTextField } from '../../components/customComponents/customTextField';
 import { LangContext } from '../../context/langContext';
 import { l10n } from '../../data/localization';
 
@@ -45,7 +46,7 @@ export function SignIn() {
   return (
     <section className={styles.sign_up_section}>
       <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
-        <TextField
+        <CustomTextField
           {...register('email')}
           id="emailForm"
           label={l10n[lang].email}
@@ -57,7 +58,7 @@ export function SignIn() {
           margin="none"
           fullWidth
         />
-        <TextField
+        <CustomTextField
           {...register('password')}
           id="passwordForm"
           label={l10n[lang].password}
@@ -69,7 +70,7 @@ export function SignIn() {
           InputProps={{
             endAdornment: (
               <InputAdornment position="end">
-                <IconButton onClick={togglePasswordVisibility}>
+                <IconButton onClick={togglePasswordVisibility} color="primary">
                   {showPassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
                 </IconButton>
               </InputAdornment>
@@ -83,15 +84,15 @@ export function SignIn() {
           <p className={styles.error_message}>{l10n[lang].loginError}</p>
         )}
         <div className={styles.button_wrapper}>
-          <Button
+          <button
             type="submit"
-            variant="contained"
+            className={styles.button}
             disabled={!isDirty || !isValid || isLoading}
           >
             {l10n[lang].login}
-          </Button>
-          <Link to={Path.SignUp}>
-            <Button>{l10n[lang].regNow}</Button>
+          </button>
+          <Link className={styles.link} to={Path.SignUp}>
+            {l10n[lang].regNow}
           </Link>
         </div>
       </form>
