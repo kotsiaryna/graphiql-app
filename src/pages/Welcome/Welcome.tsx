@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { Path } from '../../router/types';
 import { authorsData } from '../../data/data';
 import { AuthorData } from '../../types/types';
@@ -7,17 +8,32 @@ import ghIcon from '../../assets/images/gh.png';
 import styles from './Welcome.module.scss';
 import { LangContext } from '../../context/langContext';
 import { l10n } from '../../data/localization';
+import { auth } from '../../firebase';
+import { SkeletonList } from '../../components/SkeletonList/SkeletonList';
 
 export function Welcome() {
   const { lang } = useContext(LangContext);
+  const [user, loading] = useAuthState(auth);
+  const [isUserLoaded, setIsUserLoaded] = useState(false);
+
+  useEffect(() => {
+    if (!loading) {
+      setIsUserLoaded(true);
+    }
+  }, [loading]);
   return (
     <div className={styles.welcomePage}>
       <div className={styles.links}>
-        <Link to={Path.SignIn}>{l10n[lang].signIn}</Link>
-        <Link to={Path.SignUp}>{l10n[lang].signUp}</Link>
-        <Link to={Path.Main}>{l10n[lang].main}</Link>
+        {isUserLoaded ? (
+          <>
+            {!user && <Link to={Path.SignIn}>{l10n[lang].signIn}</Link>}
+            {!user && <Link to={Path.SignUp}>{l10n[lang].signUp}</Link>}
+            {user && <Link to={Path.Main}>{l10n[lang].main}</Link>}
+          </>
+        ) : (
+          <SkeletonList variant="text" count={2} width={45} height={25} />
+        )}
       </div>
-
       <div className={styles.content}>
         <div>
           <h3 className={styles.heading}>{l10n[lang].greeting}</h3>

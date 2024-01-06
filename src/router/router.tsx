@@ -3,6 +3,7 @@ import {
   redirect,
   RouterProvider,
 } from 'react-router-dom';
+import { onAuthStateChanged } from 'firebase/auth';
 import { Layout } from '../components/Layout/Layout';
 import { ErrorPage } from '../pages/ErrorPage/ErrorPage';
 import { Main } from '../pages/main/Main';
@@ -35,10 +36,32 @@ const router = createBrowserRouter([
       {
         path: Path.SignIn,
         element: <SignIn />,
+        loader: async () => {
+          const user = await new Promise((resolve) => {
+            const unsubscribe = onAuthStateChanged(auth, (data) => {
+              unsubscribe();
+              resolve(data);
+            });
+          });
+
+          if (user) return redirect(Path.Main);
+          return null;
+        },
       },
       {
         path: Path.SignUp,
         element: <SignUp />,
+        loader: async () => {
+          const user = await new Promise((resolve) => {
+            const unsubscribe = onAuthStateChanged(auth, (data) => {
+              unsubscribe();
+              resolve(data);
+            });
+          });
+
+          if (user) return redirect(Path.Main);
+          return null;
+        },
       },
       {
         path: Path.Page404,

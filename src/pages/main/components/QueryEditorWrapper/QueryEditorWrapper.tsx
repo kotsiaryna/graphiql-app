@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux';
 import Button from '@mui/material/Button';
 import AutoFixHighIcon from '@mui/icons-material/AutoFixHigh';
 import PlayCircleOutlineIcon from '@mui/icons-material/PlayCircleOutline';
-import { useState, useContext} from 'react';
+import { useState, useContext } from 'react';
 import { QueryEditor } from '../QueryEditor/QueryEditor';
 import { selectRequest } from '../../../../redux/features/queryRequest/queryRequestSelector';
 import { useAppDispatch } from '../../../../redux/hooks';
@@ -37,7 +37,7 @@ export function QueryEditorWrapper() {
             <AutoFixHighIcon color="primary" />
           </Button>
         </CustomTooltip>
-        
+
         <CustomTooltip title={l10n[lang].execute} placement="right">
           <Button onClick={handleExecuteClick}>
             <PlayCircleOutlineIcon color="primary" sx={{ fontSize: 30 }} />
