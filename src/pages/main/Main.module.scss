@@ -13,7 +13,7 @@
 
   gap: 15px;
 
-  @media screen and (max-width:900px) {
+  @media screen and (max-width: 900px) {
     height: fit-content;
     grid-template-columns: 1fr;
     grid-template-rows: 30px 800px auto;

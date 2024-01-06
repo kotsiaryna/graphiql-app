@@ -1,16 +1,15 @@
 @import '../../../../vars';
 
 .queryEditor__wrapper {
- @include borders;
- grid-area: query-editor;
- height: fit-content;
- display: flex;
- flex-direction: row-reverse;
- padding: 5px;
- @media screen and (max-width: 500px) {
-  flex-direction: column;
- }
-
+  @include borders;
+  grid-area: query-editor;
+  height: fit-content;
+  display: flex;
+  flex-direction: row-reverse;
+  padding: 5px;
+  @media screen and (max-width: 500px) {
+    flex-direction: column;
+  }
 }
 
 .toolbar {
@@ -27,6 +26,5 @@
     width: 100%;
     flex-direction: row;
     justify-content: center;
-   }
-
+  }
 }

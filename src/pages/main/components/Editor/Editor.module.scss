@@ -16,11 +16,11 @@
   @media screen and (max-width: 700px) {
     height: fit-content;
     grid-template-areas:
-    'query-editor'
-    'query-toolbar'
-     'viewer';
-  grid-template-columns: 1fr;
-  grid-template-rows: 400px 220px 400px;
-  row-gap: 10px;
+      'query-editor'
+      'query-toolbar'
+      'viewer';
+    grid-template-columns: 1fr;
+    grid-template-rows: 400px 220px 400px;
+    row-gap: 10px;
   }
 }
