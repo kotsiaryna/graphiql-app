@@ -33,7 +33,7 @@ export interface QueryRequest {
 export type SchemaType = {
   data: {
     __schema: {
-      types: [object];
+      types: [{ name: string; kind: string }];
     };
   };
 };

@@ -9,17 +9,8 @@ const schemaQuery = {
       types {
         name
         kind
-        description
-        fields {
-          name
-          description
-          type {
-            name
-            kind
-          }
         }
       }
-    }
   }`,
 };
 
@@ -42,7 +33,7 @@ export const fetchSchema = createAsyncThunk<
 });
 
 interface SchemaResponse {
-  data: object | null;
+  data: SchemaType['data']['__schema'] | null;
   errorMessage: string | undefined;
 }
 const initialState: SchemaResponse = {
