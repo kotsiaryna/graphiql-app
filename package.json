@@ -10,8 +10,7 @@
     "fix": "eslint src --fix && prettier --write src",
     "preview": "vite preview",
     "prepare": "husky install",
-    "test": "jest --coverage",
-    "test:coverage": "jest --coverage --collectCoverageFrom='src/**'"
+    "test": "jest --coverage"
   },
   "dependencies": {
     "@codemirror/lang-json": "^6.0.1",
