@@ -1,0 +1,59 @@
+@import '../../vars';
+
+@mixin flex-center() {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sign_up_section {
+  @include flex-center();
+  height: calc(100vh - 60px - 126px);
+  padding: 20px 10px;
+  width: 100%;
+  align-self: center;
+  background-color: $main-bg-color;
+  color: $font-color;
+  @media screen and (max-width: 700px) {
+    height: calc(100vh - 57px - 118px);
+  }
+}
+
+.form {
+  @include flex-center();
+  flex-direction: column;
+  gap: 15px;
+  width: 850px;
+}
+
+.button_wrapper {
+  @include flex-center();
+  flex-direction: column;
+  gap: 10px;
+}
+.button {
+  @include buttons;
+  background-color: $second-bg-color;
+  color: $main-bg-color;
+  text-transform: uppercase;
+  &:disabled {
+    @include disabled;
+    &:hover {
+      transform: none;
+    }
+  }
+  &:hover {
+    transform: scale(1.1);
+    transition: 0.3s;
+  }
+}
+.link {
+  text-transform: uppercase;
+  font-weight: bold;
+  color: $second-bg-color;
+  text-align: center;
+}
+.error_message {
+  color: $error-color;
+  font-size: 1.2rem;
+}

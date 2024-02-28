@@ -1,0 +1,29 @@
+$main-bg-color: #fcfcfa;
+$font-color: #1a405f;
+$error-color: #b32947;
+$second-bg-color: #2780c0;
+
+$base-font-size: 16px;
+$font-text: 'Roboto', sans-serif;
+$font-heading: 'Playfair Display', serif;
+
+@mixin borders {
+  border: 0.8px solid $second-bg-color;
+  border-radius: 10px;
+}
+@mixin buttons {
+  width: 100px;
+  height: 30px;
+  @include borders;
+  background-color: $second-bg-color;
+  color: $main-bg-color;
+  font-family: $font-heading;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+}
+@mixin disabled {
+  cursor: default;
+  background-color: rgba(0, 0, 0, 0.12);
+  color: rgba(0, 0, 0, 0.26);
+  border: none;
+}

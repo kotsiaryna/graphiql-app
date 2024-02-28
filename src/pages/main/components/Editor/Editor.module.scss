@@ -1,0 +1,26 @@
+@import '../../../../vars';
+
+.editor {
+  @include borders;
+  grid-area: editor;
+  padding: 10px;
+  height: 780px;
+
+  display: grid;
+  grid-template-areas:
+    'query-editor viewer'
+    'query-toolbar viewer';
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 220px;
+  column-gap: 20px;
+  @media screen and (max-width: 700px) {
+    height: fit-content;
+    grid-template-areas:
+      'query-editor'
+      'query-toolbar'
+      'viewer';
+    grid-template-columns: 1fr;
+    grid-template-rows: 400px 220px 400px;
+    row-gap: 10px;
+  }
+}

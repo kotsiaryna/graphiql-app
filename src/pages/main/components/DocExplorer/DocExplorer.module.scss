@@ -1,0 +1,35 @@
+@import '../../../../vars';
+
+.doc {
+  grid-area: doc;
+  height: 825px;
+  @include borders;
+  padding: 10px;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  @media screen and (max-width: 900px) {
+    height: 500px;
+  }
+  @media screen and (max-width: 700px) {
+    height: 400px;
+  }
+}
+
+.heading {
+  width: 100%;
+  line-height: 2;
+  text-align: center;
+  font-family: $font-heading;
+}
+
+.data {
+    font-size: 1em;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: fit-content;
+    margin: 0 auto;
+}
+.name {
+  font-weight: bold;
+}
