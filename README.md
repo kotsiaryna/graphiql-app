@@ -32,7 +32,4 @@ Implementation of [RS School](https://rs.school/) React 2023 Q4 final task by co
 * Install dependencies: `$ npm install`
 * Start server:` $ npm run dev`
 
-  The app wil rum [on local server](http://localhost:5173/)
-
-
-
+The app will rum [on local server](http://localhost:5173/)
